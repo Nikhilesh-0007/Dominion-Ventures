@@ -258,60 +258,32 @@ export default function Home() {
         </div>
       </section>
 
-      {/* WHY CHOOSE DOMINION */}
-      <section className="py-24 bg-brand-cream/50 border-y border-brand-cream-dark px-6">
-        <div className="max-w-7xl mx-auto">
+      {/* SOURCING & PROCESSING CTA SECTION */}
+      <section className="py-24 bg-brand-cream/35 px-6 border-b border-brand-cream-dark relative overflow-hidden">
+        {/* Decorative subtle background design elements */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,_var(--tw-gradient-stops))] from-brand-gold/10 via-transparent to-transparent opacity-60" />
+        
+        <div className="max-w-4xl mx-auto text-center relative z-10">
           <FadeIn>
-            <div className="text-center max-w-2xl mx-auto mb-16">
-              <span className="font-sans text-xs uppercase tracking-[0.2em] font-bold text-brand-gold">
-                The Dominion Advantage
-              </span>
-              <h2 className="text-4xl md:text-5xl font-serif text-brand-green mt-4">
-                What Sets Our Processing Apart
-              </h2>
+            <span className="font-sans text-xs uppercase tracking-[0.2em] font-bold text-brand-gold">
+              Traceability & Sourcing Excellence
+            </span>
+            <h2 className="text-4xl md:text-5xl font-serif text-brand-green mt-4 mb-6 leading-tight">
+              Experience the Journey of Sourcing & Innovation
+            </h2>
+            <p className="font-sans text-base text-brand-charcoal/80 max-w-2xl mx-auto mb-10 leading-relaxed">
+              Discover how we combine traditional Indian farming with modern food science and premium processing. Explore our 8-step business ecosystem and product development pipeline from wetland harvesting to nitrogen-sealed packaging.
+            </p>
+            <div className="flex justify-center">
+              <Link
+                href="/processing"
+                className="group flex items-center justify-center gap-2 bg-brand-green text-brand-cream font-sans text-xs uppercase tracking-widest px-8 py-4.5 rounded-full hover:bg-brand-gold hover:text-brand-green transition-all duration-300 font-bold shadow-md shadow-brand-green/10"
+              >
+                Explore Sourcing & Processing Timeline
+                <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-300" />
+              </Link>
             </div>
           </FadeIn>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="bg-white p-8 rounded-3xl border border-brand-cream-dark shadow-sm">
-              <span className="font-serif text-5xl text-brand-gold italic">01</span>
-              <h3 className="font-serif text-xl text-brand-green font-medium mt-4 mb-2">Ethical Sourcing</h3>
-              <p className="font-sans text-xs text-brand-charcoal/70 leading-relaxed">
-                Direct integration with farmers in Bihar, providing fair wages and ensuring pure agricultural inputs.
-              </p>
-            </div>
-            <div className="bg-white p-8 rounded-3xl border border-brand-cream-dark shadow-sm">
-              <span className="font-serif text-5xl text-brand-gold italic">02</span>
-              <h3 className="font-serif text-xl text-brand-green font-medium mt-4 mb-2">Sun Drying</h3>
-              <p className="font-sans text-xs text-brand-charcoal/70 leading-relaxed">
-                Naturally dried on moisture-wicking bamboo beds to lock in kernel density and nutrients.
-              </p>
-            </div>
-            <div className="bg-white p-8 rounded-3xl border border-brand-cream-dark shadow-sm">
-              <span className="font-serif text-5xl text-brand-gold italic">03</span>
-              <h3 className="font-serif text-xl text-brand-green font-medium mt-4 mb-2">Slow Dry-Roasting</h3>
-              <p className="font-sans text-xs text-brand-charcoal/70 leading-relaxed">
-                Slow wood-fired popping followed by clean hot-air tumbling to secure a light, airy, grease-free crunch.
-              </p>
-            </div>
-            <div className="bg-white p-8 rounded-3xl border border-brand-cream-dark shadow-sm">
-              <span className="font-serif text-5xl text-brand-gold italic">04</span>
-              <h3 className="font-serif text-xl text-brand-green font-medium mt-4 mb-2">Nitrogen Flushing</h3>
-              <p className="font-sans text-xs text-brand-charcoal/70 leading-relaxed">
-                Hermetically sealed with clean nitrogen to eliminate oxidation and preserve absolute freshness.
-              </p>
-            </div>
-          </div>
-
-          <div className="flex justify-center mt-12">
-            <Link
-              href="/processing"
-              className="group flex items-center gap-2 bg-brand-green text-brand-cream font-sans text-xs uppercase tracking-widest px-8 py-4.5 rounded-full hover:bg-brand-gold hover:text-brand-green transition-all duration-300 font-bold"
-            >
-              Explore Processing Timeline
-              <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-300" />
-            </Link>
-          </div>
         </div>
       </section>
     </div>

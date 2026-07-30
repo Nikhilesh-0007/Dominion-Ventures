@@ -70,7 +70,6 @@ export default function Footer() {
               <Link href="/about" className="font-sans text-sm text-brand-cream/70 hover:text-brand-gold transition-colors duration-300">Our Story</Link>
               <Link href="/products" className="font-sans text-sm text-brand-cream/70 hover:text-brand-gold transition-colors duration-300">Products</Link>
               <Link href="/processing" className="font-sans text-sm text-brand-cream/70 hover:text-brand-gold transition-colors duration-300">Processing</Link>
-              <Link href="/contact" className="font-sans text-sm text-brand-cream/70 hover:text-brand-gold transition-colors duration-300">Contact</Link>
             </nav>
           </div>
 

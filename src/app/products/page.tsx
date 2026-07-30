@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Sparkles, X, Heart, ShieldCheck, Mail, ArrowUpRight, Search } from 'lucide-react';
+import { ShieldCheck, X, ArrowUpRight, Search } from 'lucide-react';
 import FadeIn from '@/components/FadeIn';
 import { products, Product } from '@/data/products';
 
@@ -85,7 +85,7 @@ export default function Products() {
                       {product.category}
                     </span>
                     <span className="text-[10px] text-brand-charcoal/40 font-bold uppercase tracking-wider">
-                      Jumbo Grade
+                      Premium Grade
                     </span>
                   </div>
 
@@ -114,14 +114,27 @@ export default function Products() {
                   </p>
                 </div>
 
-                <div className="border-t border-brand-cream-dark pt-6 flex justify-between items-center text-[10px] font-sans font-bold uppercase tracking-wider text-brand-charcoal/50">
-                  <div className="flex gap-2">
-                    <span className="text-brand-charcoal">{product.nutritionalDetail.protein}</span>
-                    <span>Protein</span>
-                  </div>
-                  <div className="flex gap-2">
-                    <span className="text-brand-charcoal">{product.nutritionalDetail.calories}</span>
-                    <span>Calories</span>
+                <div className="mt-auto">
+                  {/* Read More button to attract clicking */}
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setSelectedProduct(product);
+                    }}
+                    className="w-full text-center bg-brand-green/5 hover:bg-brand-green hover:text-brand-cream text-brand-green font-sans text-[10px] uppercase tracking-widest py-3 rounded-full transition-all duration-300 font-bold border border-brand-green/20 mb-6 group-hover:bg-brand-green group-hover:text-brand-cream shadow-sm"
+                  >
+                    Read Innovation Report
+                  </button>
+
+                  <div className="border-t border-brand-cream-dark pt-6 flex justify-between items-center text-[10px] font-sans font-bold uppercase tracking-wider text-brand-charcoal/50">
+                    <div className="flex gap-2">
+                      <span className="text-brand-charcoal">{product.nutritionalDetail.protein}</span>
+                      <span>Protein</span>
+                    </div>
+                    <div className="flex gap-2">
+                      <span className="text-brand-charcoal">{product.nutritionalDetail.calories}</span>
+                      <span>Calories</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -151,7 +164,7 @@ export default function Products() {
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.9, y: 20 }}
               transition={{ type: 'spring', duration: 0.5 }}
-              className="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto relative shadow-2xl"
+              className="bg-white rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto relative shadow-2xl"
             >
               {/* Close Button */}
               <button
@@ -230,20 +243,70 @@ export default function Products() {
                   </p>
                 </div>
 
-                {/* Direct Quote Request CTA */}
-                <div className="border-t border-brand-cream-dark pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-                  <div className="text-center md:text-left">
-                    <span className="block text-xs uppercase tracking-widest font-bold text-brand-charcoal/50">Interested in Bulk Sourcing?</span>
-                    <span className="text-xs text-brand-charcoal/70 mt-1 block">Request wholesale pricing or sample packages.</span>
+                {/* Detailed Spec / Innovation Report */}
+                {selectedProduct.detailedReport && (
+                  <div className="mt-8 pt-8 border-t border-brand-cream-dark text-left">
+                    <span className="block text-xs uppercase tracking-widest font-bold text-brand-gold mb-4">
+                      Innovation & Sourcing Report
+                    </span>
+                    <p className="font-sans text-xs text-brand-charcoal/70 leading-relaxed bg-brand-cream p-5 rounded-2xl border border-brand-cream-dark whitespace-pre-line mb-8">
+                      {selectedProduct.detailedReport.overview}
+                    </p>
+
+                    {selectedProduct.detailedReport.sections.map((sec, sidx) => (
+                      <div key={sidx} className="mb-8">
+                        <h4 className="font-serif text-lg text-brand-green font-medium mb-3">
+                          {sec.title}
+                        </h4>
+                        
+                        {sec.content && (
+                          <p className="font-sans text-xs text-brand-charcoal/80 leading-relaxed mb-3">
+                            {sec.content}
+                          </p>
+                        )}
+
+                        {sec.bullets && (
+                          <ul className="list-disc pl-5 flex flex-col gap-2 mb-4">
+                            {sec.bullets.map((bullet, bidx) => (
+                              <li key={bidx} className="font-sans text-xs text-brand-charcoal/70 leading-relaxed">
+                                {bullet}
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+
+                        {sec.table && (
+                          <div className="overflow-x-auto rounded-xl border border-brand-cream-dark mt-4 mb-4">
+                            <table className="min-w-full divide-y divide-brand-cream-dark">
+                              <thead className="bg-brand-cream">
+                                <tr>
+                                  {sec.table.headers.map((h, hidx) => (
+                                    <th key={hidx} className="px-4 py-3 text-left text-[10px] font-sans font-bold uppercase tracking-wider text-brand-green">
+                                      {h}
+                                    </th>
+                                  ))}
+                                </tr>
+                              </thead>
+                              <tbody className="bg-white divide-y divide-brand-cream-dark">
+                                {sec.table.rows.map((row, ridx) => (
+                                  <tr key={ridx} className="hover:bg-brand-cream/20">
+                                    {row.map((cell, cidx) => (
+                                      <td key={cidx} className="px-4 py-3 text-xs font-sans text-brand-charcoal/80 leading-relaxed">
+                                        {cell}
+                                      </td>
+                                    ))}
+                                  </tr>
+                                ))}
+                              </tbody>
+                            </table>
+                          </div>
+                        )}
+                      </div>
+                    ))}
                   </div>
-                  <a
-                    href="/contact"
-                    className="flex items-center gap-2 bg-brand-green text-brand-cream font-sans text-xs uppercase tracking-widest px-6 py-3 rounded-full hover:bg-brand-gold hover:text-brand-green transition-colors duration-300 font-bold"
-                  >
-                    Send Sourcing Inquiry
-                    <ArrowUpRight size={14} />
-                  </a>
-                </div>
+                )}
+
+
               </div>
             </motion.div>
           </motion.div>
