@@ -53,9 +53,13 @@ export default function LoadingScreen() {
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 1.2, ease: "easeOut" }}
-              className="mb-8 w-24 h-24 flex items-center justify-center border border-brand-gold/20 rounded-full bg-brand-green-dark"
+              className="mb-8 w-24 h-24 flex items-center justify-center"
             >
-              <span className="font-serif text-3xl font-bold text-brand-gold">DV</span>
+              <img 
+                src="/logo.png" 
+                alt="Dominion Ventures Logo" 
+                className="w-full h-full object-contain"
+              />
             </motion.div>
 
             <motion.h1

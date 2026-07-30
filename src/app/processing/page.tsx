@@ -1,10 +1,11 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { 
-  ArrowRight, Sparkles, BookOpen, Lightbulb, Smile, 
-  Settings, ShieldCheck, Eye, Compass, Heart, 
-  TrendingUp, Zap, Package, ArrowUpRight, CheckCircle2 
+import {
+  ArrowRight, Sparkles, BookOpen, Lightbulb, Smile,
+  Settings, ShieldCheck, Eye, Compass, Heart,
+  TrendingUp, Zap, Package, ArrowUpRight, CheckCircle2,
+  Users, Sun, Filter, Flame, HardHat
 } from 'lucide-react';
 import FadeIn from '@/components/FadeIn';
 
@@ -90,17 +91,63 @@ const processSteps = [
   }
 ];
 
+const farmToPackGates = [
+  {
+    step: '01',
+    title: 'Ethical Sourcing',
+    desc: 'Our makhana journey begins in the natural freshwater wetlands of Bihar. We partner directly with local harvesting cooperatives, bypass middlemen, and guarantee fair wages to the farmers.',
+    icon: Users
+  },
+  {
+    step: '02',
+    title: 'Sun Drying',
+    desc: 'Harvested seeds are washed thoroughly and spread on elevated bamboo racks to dry naturally under the sun. This process reduces moisture levels to a precise threshold, preparing seeds for sorting.',
+    icon: Sun
+  },
+  {
+    step: '03',
+    title: 'Grading & Sorting',
+    desc: 'Dry seeds are passed through optical sorting grids that separate them by size. Only the largest, premium-grade kernels (18mm to 20mm in size) are qualified for the roasting phase.',
+    icon: Filter
+  },
+  {
+    step: '04',
+    title: 'Pre-Heating & Roasting',
+    desc: 'Before popping, the graded seeds are heated slowly in large clay pans. This conditions the starch within the seed, enabling a perfect spherical pop and minimizing hard seeds.',
+    icon: Flame
+  },
+  {
+    step: '05',
+    title: 'Manual Popping',
+    desc: 'As soon as roasting is complete, master poppers manually strike the hot seeds with a wooden mallet. The shell cracks open immediately, releasing the puffed white kernel (makhana).',
+    icon: HardHat
+  },
+  {
+    step: '06',
+    title: 'Polishing',
+    desc: 'The popped kernels are lightly polished to remove any remaining black shell fragments, leaving behind clean, bright white spheres ready for seasoning.',
+    icon: Sparkles
+  }
+];
+
 export default function Processing() {
   return (
-    <div className="bg-white min-h-screen py-12">
+    <div className="bg-white min-h-screen py-12 relative overflow-hidden">
+      {/* Background visual depth elements */}
+      <div className="absolute top-1/4 left-[-150px] w-[500px] h-[500px] bg-brand-gold/5 rounded-full filter blur-[120px] pointer-events-none animate-soft-glow" />
+      <div className="absolute bottom-1/4 right-[-150px] w-[500px] h-[500px] bg-brand-green/5 rounded-full filter blur-[120px] pointer-events-none animate-soft-glow" />
+
       {/* Header Banner */}
-      <section className="bg-brand-cream py-20 px-6 relative overflow-hidden">
+      <section className="bg-brand-cream py-16 lg:py-20 px-6 relative overflow-hidden">
+        {/* Abstract pattern overlay */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-brand-gold/10 via-transparent to-transparent opacity-60" />
+
         <div className="max-w-7xl mx-auto relative z-10">
           <FadeIn>
-            <span className="font-sans text-xs uppercase tracking-[0.2em] font-bold text-brand-gold">
-              Traceability & Process Blueprint
+            <span className="font-sans text-xs uppercase tracking-[0.25em] font-extrabold text-brand-gold">
+              Traceability & Sourcing Blueprint
             </span>
-            <h1 className="text-5xl md:text-7xl font-serif text-brand-green mt-6 mb-8 max-w-3xl leading-tight">
+            <h1 className="text-6xl md:text-8xl font-serif text-brand-green mt-6 mb-8 max-w-4xl leading-[1.05] tracking-tight">
               Crafting Excellence, <br />
               <span className="italic text-brand-gold">From Wetland to Package.</span>
             </h1>
@@ -110,19 +157,19 @@ export default function Processing() {
       </section>
 
       {/* SECTION 1: DOMINION VENTURES BUSINESS ECOSYSTEM */}
-      <section className="py-24 bg-brand-cream/10 px-6 border-b border-brand-cream-dark overflow-hidden">
+      <section className="py-16 lg:py-20 bg-white px-6 border-b border-brand-cream-dark overflow-hidden">
         <div className="max-w-7xl mx-auto">
           {/* Section Header */}
-          <div className="text-center max-w-3xl mx-auto mb-20">
+          <div className="text-center max-w-3xl mx-auto mb-10">
             <FadeIn>
-              <span className="font-sans text-xs uppercase tracking-[0.2em] font-bold text-brand-gold">
+              <span className="font-sans text-xs uppercase tracking-[0.25em] font-extrabold text-brand-gold">
                 Business Ecosystem
               </span>
-              <h2 className="text-4xl md:text-5xl font-serif text-brand-green mt-4 mb-6">
+              <h2 className="text-5xl md:text-6xl font-serif text-brand-green mt-4 mb-6 leading-tight">
                 Building a Brand That Inspires Healthy Living
               </h2>
               <div className="h-[2px] w-20 bg-brand-gold mx-auto mb-6" />
-              <p className="font-sans text-base text-brand-charcoal/70 leading-relaxed">
+              <p className="font-sans text-sm md:text-base text-brand-charcoal/70 leading-relaxed">
                 At Dominion Ventures, every product follows a carefully designed journey—from ethical sourcing and product innovation to premium packaging, consumer experience, and long-term brand growth.
               </p>
             </FadeIn>
@@ -162,14 +209,14 @@ export default function Processing() {
             </svg>
 
             {/* Central Circle Element */}
-            <motion.div 
+            <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 1, ease: "easeOut" }}
+              transition={{ duration: 1.2, ease: "easeOut" }}
               viewport={{ once: true }}
-              className="w-52 h-52 rounded-full bg-brand-green-dark border-2 border-brand-gold text-brand-cream flex flex-col items-center justify-center text-center p-6 shadow-2xl relative z-20"
+              className="w-52 h-52 rounded-full bg-brand-green-dark border border-brand-gold text-brand-cream flex flex-col items-center justify-center text-center p-6 shadow-2xl relative z-20"
             >
-              <span className="font-serif text-2xl font-semibold tracking-wide text-brand-gold">Dominion</span>
+              <span className="font-serif text-2xl font-bold tracking-wide text-brand-gold">Dominion</span>
               <span className="font-serif text-lg font-light tracking-widest text-brand-gold/90 -mt-1">Ventures</span>
               <div className="w-10 h-[1px] bg-brand-gold/40 my-3" />
               <span className="font-sans text-[8px] uppercase tracking-[0.2em] text-brand-cream/80 max-w-[130px] leading-relaxed">
@@ -190,13 +237,13 @@ export default function Processing() {
                   whileInView={{ x, y, opacity: 1, scale: 1 }}
                   transition={{ type: "spring", stiffness: 60, damping: 15, delay: idx * 0.08 }}
                   viewport={{ once: true }}
-                  className="absolute w-60 bg-white/80 backdrop-blur-md border border-brand-cream-dark rounded-2xl p-5 shadow-md hover:shadow-2xl hover:border-brand-gold/40 transition-all duration-300 group z-10"
+                  className="absolute w-60 bg-white border border-brand-cream-dark/60 rounded-2xl p-5 shadow-lg hover:shadow-2xl hover:border-brand-gold/40 transition-all duration-300 group z-10 cursor-pointer"
                 >
                   <div className="flex gap-3 items-center mb-3">
-                    <div className="w-9 h-9 rounded-xl bg-brand-green/5 text-brand-green flex items-center justify-center group-hover:bg-brand-green group-hover:text-brand-cream transition-colors duration-300 shrink-0">
+                    <div className="w-9 h-9 rounded-xl bg-brand-green/5 text-brand-green flex items-center justify-center group-hover:bg-brand-green group-hover:text-brand-cream transition-colors duration-350 shrink-0 shadow-inner">
                       <card.icon size={16} />
                     </div>
-                    <h4 className="font-serif text-base text-brand-green font-medium group-hover:text-brand-gold transition-colors duration-300">
+                    <h4 className="font-serif text-base text-brand-green font-bold group-hover:text-brand-gold transition-colors duration-300">
                       {card.title}
                     </h4>
                   </div>
@@ -212,7 +259,7 @@ export default function Processing() {
           <div className="hidden md:grid lg:hidden grid-cols-2 gap-8 max-w-4xl mx-auto relative px-4">
             {ecosystemCards.map((card, idx) => (
               <FadeIn key={idx} delay={idx * 0.08}>
-                <div className="bg-white/80 backdrop-blur-sm border border-brand-cream-dark rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 group h-full flex gap-4">
+                <div className="bg-white border border-brand-cream-dark rounded-2xl p-6 shadow-sm hover:shadow-md transition-all duration-300 group h-full flex gap-4">
                   <div className="w-10 h-10 rounded-xl bg-brand-green/5 text-brand-green flex items-center justify-center group-hover:bg-brand-green group-hover:text-brand-cream transition-colors duration-300 shrink-0">
                     <card.icon size={18} />
                   </div>
@@ -236,7 +283,7 @@ export default function Processing() {
                 {/* Connector Dot */}
                 <span className="absolute -left-[31px] top-2.5 w-4 h-4 rounded-full bg-brand-green border-2 border-brand-gold z-10" />
                 <FadeIn delay={idx * 0.05}>
-                  <div className="bg-white/95 border border-brand-cream-dark rounded-2xl p-5 shadow-sm group">
+                  <div className="bg-white border border-brand-cream-dark rounded-2xl p-5 shadow-sm group">
                     <div className="flex gap-3 items-center mb-3">
                       <div className="w-9 h-9 rounded-xl bg-brand-green/5 text-brand-green flex items-center justify-center shrink-0">
                         <card.icon size={16} />
@@ -257,19 +304,19 @@ export default function Processing() {
       </section>
 
       {/* SECTION 2: PRODUCT DEVELOPMENT PROCESS */}
-      <section className="py-24 bg-white px-6 border-b border-brand-cream-dark">
+      <section className="py-16 lg:py-20 bg-brand-cream/10 px-6 border-b border-brand-cream-dark">
         <div className="max-w-7xl mx-auto">
           {/* Section Header */}
-          <div className="text-center max-w-3xl mx-auto mb-20">
+          <div className="text-center max-w-3xl mx-auto mb-10">
             <FadeIn>
-              <span className="font-sans text-xs uppercase tracking-[0.2em] font-bold text-brand-gold">
-                Product Development Process
+              <span className="font-sans text-xs uppercase tracking-[0.25em] font-extrabold text-brand-gold">
+                Product Development
               </span>
-              <h2 className="text-4xl md:text-5xl font-serif text-brand-green mt-4 mb-6">
+              <h2 className="text-5xl md:text-6xl font-serif text-brand-green mt-4 mb-6 leading-tight">
                 From Idea to Premium Product
               </h2>
               <div className="h-[2px] w-20 bg-brand-gold mx-auto mb-6" />
-              <p className="font-sans text-base text-brand-charcoal/70 leading-relaxed">
+              <p className="font-sans text-sm md:text-base text-brand-charcoal/70 leading-relaxed">
                 Every Dominion Ventures product follows a carefully structured development process focused on innovation, quality, and consumer satisfaction.
               </p>
             </FadeIn>
@@ -279,7 +326,7 @@ export default function Processing() {
           <div className="relative hidden lg:block mb-16">
             {/* Animated Progress Line */}
             <div className="absolute top-[80px] left-8 right-8 h-[2px] bg-brand-cream-dark z-0">
-              <motion.div 
+              <motion.div
                 className="h-full bg-brand-gold origin-left"
                 initial={{ scaleX: 0 }}
                 whileInView={{ scaleX: 1 }}
@@ -291,7 +338,7 @@ export default function Processing() {
             <div className="grid grid-cols-6 gap-6 relative z-10">
               {processSteps.map((step, idx) => (
                 <FadeIn key={idx} delay={idx * 0.15}>
-                  <div className="flex flex-col items-center group h-full">
+                  <div className="flex flex-col items-center group h-full cursor-pointer">
                     {/* Circle Node Container */}
                     <div className="relative mb-6">
                       <div className="w-16 h-16 rounded-full bg-white border border-brand-cream-dark group-hover:border-brand-gold flex items-center justify-center text-brand-green shadow-md group-hover:shadow-lg transition-all duration-300 z-10 relative">
@@ -304,10 +351,10 @@ export default function Processing() {
                     </div>
 
                     {/* Step Card */}
-                    <div className="bg-white rounded-2xl p-5 border border-brand-cream-dark group-hover:border-brand-gold/40 shadow-sm hover:shadow-xl transition-all duration-500 text-center flex-grow flex flex-col justify-between">
+                    <div className="bg-white rounded-2xl p-5 border border-brand-cream-dark group-hover:border-brand-gold/45 shadow-lg hover:shadow-2xl transition-all duration-500 text-center flex-grow flex flex-col justify-between">
                       <div>
-                        <span className="font-sans text-[10px] uppercase tracking-widest text-brand-gold font-bold block mb-2">
-                          {step.step}
+                        <span className="font-serif text-2xl text-brand-gold italic font-bold block mb-1">
+                          0{idx + 1}
                         </span>
                         <h4 className="font-serif text-lg text-brand-green font-medium mb-3 group-hover:text-brand-gold transition-colors duration-300">
                           {step.title}
@@ -358,7 +405,7 @@ export default function Processing() {
               <div key={idx} className="relative">
                 {/* Timeline Dot */}
                 <span className="absolute -left-[31px] top-2.5 w-4 h-4 rounded-full bg-brand-green border-2 border-brand-gold z-10" />
-                
+
                 <FadeIn delay={idx * 0.05}>
                   <div className="bg-white border border-brand-cream-dark rounded-2xl p-5 shadow-sm group">
                     <div className="flex gap-3 items-center mb-3">
@@ -385,29 +432,80 @@ export default function Processing() {
         </div>
       </section>
 
+      {/* SECTION 3: FARM TO PACK DETAILED TIMELINE */}
+      <section className="py-16 lg:py-20 bg-white px-6">
+        <div className="max-w-7xl mx-auto">
+          {/* Section Header */}
+          <div className="text-center max-w-3xl mx-auto mb-10">
+            <FadeIn>
+              <span className="font-sans text-xs uppercase tracking-[0.25em] font-extrabold text-brand-gold">
+                Harvesting Pipeline
+              </span>
+              <h2 className="text-5xl md:text-6xl font-serif text-brand-green mt-4 mb-6 leading-tight">
+                The Seven Gates of Sourcing
+              </h2>
+              <div className="h-[2px] w-20 bg-brand-gold mx-auto mb-6" />
+              <p className="font-sans text-sm md:text-base text-brand-charcoal/70 leading-relaxed">
+                Experience our traditional farm-to-pack processing cycle designed to lock in natural freshness, flavor density, and nutrients.
+              </p>
+            </FadeIn>
+          </div>
+
+          {/* Interactive Sourcing Timeline (Fills like an Apple scroll presentation) */}
+          <div className="relative border-l-2 border-brand-gold/30 pl-8 md:pl-16 ml-4 md:ml-20 flex flex-col gap-20 max-w-4xl mx-auto">
+            {farmToPackGates.map((gate, idx) => (
+              <div key={idx} className="relative group cursor-pointer">
+                {/* Timeline Indicator Dot */}
+                <div className="absolute left-[-49px] md:left-[-81px] top-0 w-10 h-10 rounded-full bg-white border border-brand-gold flex items-center justify-center text-brand-green group-hover:scale-110 group-hover:bg-brand-green group-hover:text-brand-cream transition-all duration-300 shadow-md">
+                  <gate.icon size={16} />
+                </div>
+
+                {/* Content Box */}
+                <FadeIn delay={0.1}>
+                  <div className="bg-brand-cream/35 p-8 md:p-10 rounded-[2.2rem] border border-brand-cream-dark group-hover:border-brand-gold/45 shadow-sm hover:shadow-2xl hover:bg-white transition-all duration-500 flex flex-col gap-4">
+                    <div className="flex flex-wrap items-center gap-4">
+                      <span className="font-serif text-2xl text-brand-gold italic font-extrabold">
+                        {gate.step}
+                      </span>
+                      <span className="h-4 w-[1px] bg-brand-gold/40" />
+                      <h3 className="font-serif text-2xl md:text-3xl text-brand-green font-medium group-hover:text-brand-gold transition-colors duration-300">
+                        {gate.title}
+                      </h3>
+                    </div>
+                    <p className="font-sans text-sm text-brand-charcoal/70 leading-relaxed">
+                      {gate.desc}
+                    </p>
+                  </div>
+                </FadeIn>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Quality Gate Check Section */}
-      <section className="py-24 px-6 bg-white max-w-5xl mx-auto">
-        <div className="p-8 md:p-12 rounded-[2rem] bg-brand-green-dark text-brand-cream border border-brand-gold/30 relative overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-brand-green to-brand-green-dark opacity-50" />
-          
+      <section className="py-14 lg:py-16 px-6 bg-white max-w-5xl mx-auto">
+        <div className="p-8 md:p-16 rounded-[2.5rem] bg-brand-green-dark text-brand-cream border border-brand-gold/30 relative overflow-hidden shadow-2xl">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-brand-green to-brand-green-dark opacity-50 pointer-events-none" />
+
           <div className="relative z-10">
-            <span className="font-sans text-xs uppercase tracking-[0.2em] text-brand-gold font-bold">Export Ready Validation</span>
-            <h2 className="text-3xl md:text-4xl font-serif mt-4 mb-8 text-brand-gold">Our Quality Guarantees</h2>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 border-t border-brand-cream/10 pt-8">
-              <div className="flex gap-3 items-start">
-                <CheckCircle2 size={18} className="text-brand-gold mt-0.5 shrink-0" />
+            <span className="font-sans text-xs uppercase tracking-[0.25em] text-brand-gold font-extrabold">Export Ready Validation</span>
+            <h2 className="text-4xl md:text-5xl font-serif mt-4 mb-10 text-brand-gold leading-none">Our Quality Guarantees</h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 border-t border-brand-cream/10 pt-10">
+              <div className="flex gap-4 items-start">
+                <CheckCircle2 size={20} className="text-brand-gold mt-0.5 shrink-0" />
                 <div>
                   <span className="font-sans font-bold text-xs uppercase tracking-wider block text-brand-cream">100% Food Grade Materials</span>
-                  <p className="font-sans text-xs text-brand-cream/60 mt-1">Our packaging materials are food-grade and certified for chemical migrations.</p>
+                  <p className="font-sans text-xs text-brand-cream/60 mt-1.5 leading-relaxed">Our packaging materials are food-grade and certified for chemical migrations under strict safety levels.</p>
                 </div>
               </div>
-              
-              <div className="flex gap-3 items-start">
-                <CheckCircle2 size={18} className="text-brand-gold mt-0.5 shrink-0" />
+
+              <div className="flex gap-4 items-start">
+                <CheckCircle2 size={20} className="text-brand-gold mt-0.5 shrink-0" />
                 <div>
                   <span className="font-sans font-bold text-xs uppercase tracking-wider block text-brand-cream">Direct Wetlands Sourcing</span>
-                  <p className="font-sans text-xs text-brand-cream/60 mt-1">We maintain deep roots in local harvesting sites, ensuring 100% batch traceability.</p>
+                  <p className="font-sans text-xs text-brand-cream/60 mt-1.5 leading-relaxed">We maintain deep roots in local harvesting sites, ensuring 100% batch traceability and farmer empowerment.</p>
                 </div>
               </div>
             </div>

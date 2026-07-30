@@ -1,88 +1,266 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import {
+  ArrowRight, Sparkles, ShieldCheck, Leaf, Flame,
+  Zap, Award, Star, Quote, ChevronLeft, ChevronRight
+} from 'lucide-react';
 import FadeIn from '@/components/FadeIn';
 
+// Core pillars (floating glass cards)
+const corePillars = [
+  {
+    title: 'Ethical Sourcing',
+    desc: 'Direct farm integration in Bihar, securing fair trade wages and traceably pure crop yields.',
+    icon: Leaf,
+    badge: 'Farm Direct'
+  },
+  {
+    title: 'Gourmet Selection',
+    desc: 'Sorting only the largest, premium-grade kernels (18mm to 20mm) for unmatched consistency.',
+    icon: Award,
+    badge: 'Jumbo Size'
+  },
+  {
+    title: 'Traditional Roasting',
+    desc: 'Slow wood-fired dry popping followed by clean tumbling to preserve a light grease-free crunch.',
+    icon: Flame,
+    badge: 'Wood-Fired'
+  },
+  {
+    title: 'Nitrogen Freshness',
+    desc: 'Hermetically sealing packages with nitrogen to eliminate oxidation and preserve natural spices.',
+    icon: ShieldCheck,
+    badge: '100% Crisp'
+  }
+];
+
+// Stat list
+const statsList = [
+  { value: '20+', label: 'Premium Flavours' },
+  { value: '5', label: 'Future Product Categories' },
+  { value: '100%', label: 'Natural Ingredients' },
+  { value: 'Ready', label: 'Export Certified' }
+];
+
+// Flavor Showcase Data
+const traditionalFlavors = [
+  { name: 'Gunpowder (Podi)', tagline: 'Curry Leaf & Mustard', desc: 'Bold south spice blend with toasted sesame oils.', gradient: 'from-amber-600/20 via-orange-500/10 to-transparent', icon: Zap },
+  { name: 'Chettinad Spice', tagline: 'Aromatic Black Pepper', desc: 'Infused with roasted star anise and heavy fennel seeds.', gradient: 'from-red-700/20 via-rose-600/10 to-transparent', icon: Flame },
+  { name: 'Coconut Lime', tagline: 'Zesty & Tropical', desc: 'Rich toasted coconut flakes tossed with fresh key lime oils.', gradient: 'from-emerald-600/20 via-teal-500/10 to-transparent', icon: Leaf },
+  { name: 'Curd Rice Style', tagline: 'Creamy & Cool', desc: 'Mild yogurt base tempered with dry chili and mustard seeds.', gradient: 'from-gray-200/40 via-amber-50/20 to-transparent', icon: Sparkles }
+];
+
+const internationalFlavors = [
+  { name: 'Texas Smoky BBQ', tagline: 'Fast-Casual Sweet', desc: 'Deep molasses and hickory smoke seasoning with brown sugar notes.', gradient: 'from-orange-600/20 via-red-500/10 to-transparent', icon: Flame },
+  { name: 'Sour Cream & Chive', tagline: 'European Herb', desc: 'Gourmet French cream base topped with garden-fresh wild chives.', gradient: 'from-green-600/20 via-emerald-500/10 to-transparent', icon: Leaf },
+  { name: 'White Cheddar & Truffle', tagline: 'Rich & Aromatic', desc: 'Aged sharp English cheddar enhanced with Italian white truffles.', gradient: 'from-yellow-500/25 via-amber-400/10 to-transparent', icon: Sparkles },
+  { name: 'Sriracha Lime', tagline: 'Spicy Fusion', desc: 'Fermented red chili paste zested with freeze-dried key lime powder.', gradient: 'from-rose-600/25 via-red-500/10 to-transparent', icon: Zap }
+];
+
+// Future Products Zig-Zag Data
+const futureProducts = [
+  {
+    title: 'Next-Gen Ice Cream',
+    tagline: 'Model 1, 2 & 3 Servings',
+    desc: 'Anatomically sculpted fruit gelato shells encasing fresh berry sorbets, ultra-viscous shake layers separating rich pistachio creams, and interactive painter\'s palette plating concepts.',
+    image: '/next_gen_ice (2).png',
+    gradient: 'from-pink-500/10 via-purple-500/5 to-transparent',
+    features: ['Sculpted Fruit Shells', 'Viscous Pistachio Creams', 'Artist Palette Trays']
+  },
+  {
+    title: 'Functional Soda',
+    tagline: 'Prebiotic & Probiotic sparkling soda',
+    desc: 'Guilt-free alternative to traditional HFCS soft drinks. Formulated with gut-microbiome prebiotic fibers, probiotic proteins, and organic botanical caffeine from tea sources.',
+    image: '/Functional Soda.png',
+    gradient: 'from-blue-500/10 via-cyan-500/5 to-transparent',
+    features: ['Digestive Prebiotics', 'Probiotic Proteins', 'Zero HFCS / Low Glycemic']
+  },
+  {
+    title: 'Enhanced Longevity Water',
+    tagline: 'Bioactive Synergy Hydration',
+    desc: 'Advanced water-soluble delivery mechanism infused with scientifically validated synergistic pairings (Vitamin D3 + Magnesium + K2) to optimize cellular repair and systemic health span.',
+    image: '/water (2).png',
+    gradient: 'from-indigo-500/10 via-blue-500/5 to-transparent',
+    features: ['D3 + Magnesium + K2 Synergy', 'Fast Water-Soluble Absorption', 'Ionic Trace Minerals']
+  }
+];
+
+// Testimonials Data
+const testimonials = [
+  {
+    quote: "Dominion Ventures has reinvented how our gourmet cafes approach healthy snacking. The Gunpowder Podi Makhana became an overnight favorite among our health-conscious clientele.",
+    author: "Chef Vikram Adyar",
+    title: "Culinary Director, The Southern Table Group",
+    stars: 5
+  },
+  {
+    quote: "The visual presentation and high-density nitrogen packaging of their premium collections set a new benchmark for clean label exports. Their batch traceability is second to none.",
+    author: "Evelyn Laurent",
+    title: "Category Sourcing Buyer, Whole Foods Paris",
+    stars: 5
+  },
+  {
+    quote: "Redefining superfoods requires a bridge between agricultural heritage and modern food science. Dominion Ventures has successfully engineered this bridge with extreme precision.",
+    author: "Dr. Ramesh Krishnan",
+    title: "Longevity Sourcing Specialist, Wellness Club India",
+    stars: 5
+  }
+];
+
 export default function Home() {
+  const [activeFlavourTab, setActiveFlavourTab] = useState<'traditional' | 'international'>('traditional');
+  const [activeTestimonialIdx, setActiveTestimonialIdx] = useState(0);
+
+  const nextTestimonial = () => {
+    setActiveTestimonialIdx((prev) => (prev + 1) % testimonials.length);
+  };
+
+  const prevTestimonial = () => {
+    setActiveTestimonialIdx((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  };
+
   return (
-    <div className="flex flex-col w-full bg-white">
+    <div className="flex flex-col w-full bg-white relative">
       {/* HERO SECTION */}
-      <section className="relative min-h-[90vh] flex items-center overflow-hidden px-6 py-20 bg-brand-cream">
-        {/* Full-bleed Background Image */}
+      <section className="relative min-h-[90vh] lg:h-[95vh] flex items-center overflow-hidden px-6 py-16 lg:py-20 bg-brand-cream">
+        {/* Full-bleed Background Image with subtle parallax */}
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-100 transition-transform duration-[10s] ease-out scale-105 pointer-events-none"
           style={{ backgroundImage: "url('/hero_img.png')" }}
         />
-        {/* Light Gradient Overlay for Text Readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/85 to-transparent lg:from-white/95 lg:via-white/70 lg:to-transparent" />
+        {/* Soft Radial Glow Gradient Behind Product */}
+        <div className="absolute top-1/2 right-[15%] -translate-y-1/2 w-[550px] h-[550px] bg-brand-gold/20 rounded-full filter blur-[120px] pointer-events-none animate-soft-glow" />
+        {/* Light Overlay Gradient - Left-aligned only */}
+        <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-white via-white/85 to-transparent w-full lg:w-[48%] pointer-events-none" />
         
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10 w-full">
           {/* Hero Left Content */}
-          <div className="lg:col-span-7 flex flex-col gap-8 text-brand-charcoal">
-            <div className="inline-flex items-center gap-2 border border-brand-gold/30 rounded-full px-4 py-1.5 w-fit bg-white/60 backdrop-blur-sm">
-              <Sparkles size={14} className="text-brand-gold" />
-              <span className="font-sans text-[10px] uppercase tracking-[0.2em] font-bold text-brand-green">
+          <div className="lg:col-span-7 flex flex-col gap-6 md:gap-8 text-brand-charcoal text-left">
+            <div className="inline-flex items-center gap-2 border border-brand-gold/40 rounded-full px-4 py-1.5 w-fit bg-white/70 backdrop-blur-md shadow-premium-sm">
+              <Sparkles size={13} className="text-brand-gold" />
+              <span className="font-sans text-[10px] uppercase tracking-[0.25em] font-bold text-brand-green">
                 A New Standard in Snacking
               </span>
             </div>
 
-            <h1 className="text-6xl md:text-7xl lg:text-8xl font-serif text-brand-green leading-[1.05] tracking-tight">
+            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-serif text-brand-green leading-[1.05] tracking-tight">
               Healthy Snacking,<br />
               <span className="italic text-brand-gold">Reimagined.</span>
             </h1>
 
-            <p className="font-sans text-base md:text-lg text-brand-charcoal/80 max-w-lg leading-relaxed">
-              Traditional nutrition crafted into premium healthy snacks for today&apos;s lifestyle. Enjoy our signature cold-pressed, slow-roasted Makhana, prepared with chef-crafted spice recipes.
+            <p className="font-sans text-base md:text-lg text-brand-charcoal/80 max-w-lg leading-relaxed mt-1">
+              Traditional Indian superfoods crafted into premium healthy snacks for today&apos;s lifestyle. Sourced directly from farms, dry-roasted, and infused with gourmet spice recipes.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mt-2">
               <Link
                 href="/products"
-                className="group flex items-center justify-center gap-2 bg-brand-green text-brand-cream font-sans text-xs uppercase tracking-widest px-8 py-4.5 rounded-full hover:bg-brand-gold hover:text-brand-green transition-all duration-300 font-bold shadow-md shadow-brand-green/10"
+                className="btn-primary"
               >
-                Explore Products
-                <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-300" />
+                <span>Explore Products</span>
+                <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-300 relative z-10" />
               </Link>
               <Link
                 href="/about"
-                className="flex items-center justify-center bg-transparent border border-brand-green/30 text-brand-green font-sans text-xs uppercase tracking-widest px-8 py-4.5 rounded-full hover:border-brand-gold hover:bg-brand-cream-dark transition-all duration-300 font-bold"
+                className="btn-secondary"
               >
                 Our Story
               </Link>
             </div>
           </div>
 
-          {/* Hero Right Visual */}
-          <div className="lg:col-span-5 hidden lg:block" />
+          {/* Hero Right Visual: Left empty to show background image on the right */}
+          <div className="lg:col-span-5 hidden lg:flex items-center justify-center relative pointer-events-none" />
+        </div>
+
+        {/* Premium Scroll Indicator */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 pointer-events-none z-10 hidden md:flex">
+          <span className="font-sans text-[9px] uppercase tracking-[0.3em] text-brand-charcoal/50 font-bold">Scroll</span>
+          <div className="w-[18px] h-[30px] rounded-full border border-brand-charcoal/30 flex justify-center p-1">
+            <motion.div
+              animate={{ y: [0, 8, 0] }}
+              transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}
+              className="w-1.5 h-1.5 bg-brand-gold rounded-full"
+            />
+          </div>
         </div>
       </section>
 
-      {/* ABOUT DOMINION VENTURES */}
-      <section className="py-24 bg-brand-cream/30 px-6 border-b border-brand-cream-dark">
+      {/* CORE PILLARS SECTION */}
+      <section className="py-16 lg:py-20 bg-white px-6 border-b border-brand-cream-dark relative">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            {/* Image on the Left */}
-            <div className="lg:col-span-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {corePillars.map((pillar, idx) => (
+              <FadeIn key={idx} delay={idx * 0.1}>
+                <div className="relative bg-white/70 backdrop-blur-md rounded-3xl p-8 border border-brand-cream-dark shadow-premium-sm hover:shadow-premium-lg hover:border-brand-gold/45 hover:-translate-y-2 transition-all duration-500 group h-full flex flex-col justify-between">
+                  <div className="absolute top-0 left-8 right-8 h-[2px] bg-gradient-to-r from-transparent via-brand-gold/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                  <div>
+                    <div className="flex justify-between items-center mb-6">
+                      <div className="w-12 h-12 rounded-2xl bg-brand-green/5 text-brand-green flex items-center justify-center group-hover:bg-brand-green group-hover:text-brand-cream group-hover:rotate-[360deg] transition-all duration-700 shadow-inner">
+                        <pillar.icon size={20} />
+                      </div>
+                      <span className="text-[9px] font-sans text-brand-gold uppercase tracking-widest font-bold">
+                        {pillar.badge}
+                      </span>
+                    </div>
+
+                    <h3 className="font-serif text-2xl text-brand-green mb-3 group-hover:text-brand-gold transition-colors duration-300">
+                      {pillar.title}
+                    </h3>
+                    <p className="font-sans text-xs text-brand-charcoal/70 leading-relaxed">
+                      {pillar.desc}
+                    </p>
+                  </div>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* EDITORIAL ABOUT SECTION */}
+      <section className="py-16 lg:py-20 bg-brand-cream/30 px-6 border-b border-brand-cream-dark relative overflow-hidden">
+        {/* Floating Decorative Leaf Pattern background */}
+        <div className="absolute top-10 left-10 opacity-[0.03] rotate-12 scale-125 select-none pointer-events-none hidden xl:block">
+          <Leaf size={350} className="text-brand-green" />
+        </div>
+
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+            {/* Overlapping Images on the Left */}
+            <div className="lg:col-span-5 relative flex items-center justify-center">
               <FadeIn direction="left">
-                <div className="relative aspect-[4/3] sm:aspect-[16/10] lg:aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl border border-brand-cream-dark group bg-brand-cream">
-                  <img 
-                    src="/about section img.png" 
-                    alt="About Dominion Ventures" 
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                <div className="relative w-full max-w-[380px] aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-premium-lg border border-brand-cream-dark/60 group bg-brand-cream z-10">
+                  <img
+                    src="/about section img.png"
+                    alt="Dominion Sourcing"
+                    className="w-full h-full object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-brand-green/5 mix-blend-multiply pointer-events-none" />
                 </div>
+                {/* Floating Decorative Statistics Badge */}
+                <motion.div
+                  animate={{ y: [0, -10, 0] }}
+                  transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
+                  className="absolute -bottom-8 -right-4 bg-brand-green-dark border border-brand-gold/30 rounded-3xl p-6 shadow-premium-gold text-brand-cream hidden sm:block z-20 w-48 text-center"
+                >
+                  <span className="block font-serif text-3xl text-brand-gold font-bold">100%</span>
+                  <span className="block font-sans text-[10px] uppercase tracking-widest text-brand-cream/80 mt-1 font-bold">Traceable Source</span>
+                </motion.div>
               </FadeIn>
             </div>
 
-            {/* Text and Button on the Right */}
-            <div className="lg:col-span-7 flex flex-col gap-6 text-left">
+            {/* Content & Dashboard on the Right */}
+            <div className="lg:col-span-7 flex flex-col gap-8 text-left relative z-10">
               <FadeIn>
-                <span className="font-sans text-xs uppercase tracking-[0.2em] font-bold text-brand-gold">
-                  About Dominion Ventures
+                <span className="font-sans text-xs uppercase tracking-[0.25em] font-extrabold text-brand-gold">
+                  Our Corporate Mission
                 </span>
-                <h2 className="text-4xl md:text-5xl font-serif text-brand-green mt-3 mb-2 leading-tight">
+                <h2 className="text-5xl md:text-6xl font-serif text-brand-green mt-4 leading-[1.1] tracking-tight">
                   Transforming Traditional Nutrition into Modern Healthy Living
                 </h2>
               </FadeIn>
@@ -95,32 +273,31 @@ export default function Home() {
                   <p>
                     From our flagship Premium Makhana to our upcoming range of functional beverages, innovative desserts, enhanced hydration, and healthy snacks, every product reflects our commitment to natural ingredients, premium craftsmanship, and global-quality standards.
                   </p>
-                  <p>
-                    Our mission is simple—to make healthier choices more accessible while preserving the authenticity of nature&apos;s finest ingredients.
-                  </p>
                 </div>
               </FadeIn>
 
-              <FadeIn delay={0.3}>
-                <div className="flex flex-wrap gap-x-4 gap-y-2 text-xs uppercase tracking-wider text-brand-green font-semibold font-sans mt-4 pt-6 border-t border-brand-cream-dark">
-                  <span>Premium Quality</span>
-                  <span className="text-brand-gold">•</span>
-                  <span>Traditional Heritage</span>
-                  <span className="text-brand-gold">•</span>
-                  <span>Modern Innovation</span>
-                  <span className="text-brand-gold">•</span>
-                  <span>Healthy Future</span>
-                </div>
-              </FadeIn>
+              {/* Statistics Grid */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-8 border-t border-brand-cream-dark">
+                {statsList.map((stat, idx) => (
+                  <div key={idx} className="flex flex-col">
+                    <span className="font-serif text-3xl md:text-4xl text-brand-green font-semibold">
+                      {stat.value}
+                    </span>
+                    <span className="font-sans text-[10px] uppercase tracking-wider text-brand-charcoal/50 mt-1.5 font-bold">
+                      {stat.label}
+                    </span>
+                  </div>
+                ))}
+              </div>
 
               <FadeIn delay={0.4}>
-                <div className="mt-6">
+                <div className="mt-4">
                   <Link
                     href="/about"
-                    className="group inline-flex items-center gap-2 bg-brand-green text-brand-cream font-sans text-xs uppercase tracking-widest px-8 py-4 rounded-full hover:bg-brand-gold hover:text-brand-green transition-all duration-300 font-bold shadow-md shadow-brand-green/10"
+                    className="btn-primary"
                   >
-                    Read Our Story
-                    <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-300" />
+                    <span>Read Our Story</span>
+                    <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-300 relative z-10" />
                   </Link>
                 </div>
               </FadeIn>
@@ -129,114 +306,71 @@ export default function Home() {
         </div>
       </section>
 
-      {/* PRODUCT PORTFOLIO */}
-      <section className="py-24 bg-white px-6 border-b border-brand-cream-dark">
+      {/* PRODUCT PORTFOLIO SECTION */}
+      <section className="py-16 lg:py-20 bg-white px-6 border-b border-brand-cream-dark relative">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
-          <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="text-center max-w-3xl mx-auto mb-10">
             <FadeIn>
-              <span className="font-sans text-xs uppercase tracking-[0.2em] font-bold text-brand-gold">
-                Our Product Portfolio
+              <span className="font-sans text-xs uppercase tracking-[0.25em] font-extrabold text-brand-gold">
+                Brand Core Standards
               </span>
-              <h2 className="text-4xl md:text-5xl font-serif text-brand-green mt-4 mb-6">
-                Premium cards showing all product categories
+              <h2 className="text-5xl md:text-6xl font-serif text-brand-green mt-4 mb-6 leading-tight">
+                Our Signature Product Portfolio
               </h2>
               <div className="h-[2px] w-20 bg-brand-gold mx-auto" />
             </FadeIn>
           </div>
 
-          {/* Grid Layout containing 2 products */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto mb-16">
-            {/* Makhana Card - Flagship Green Styling */}
+          {/* Centered Single Product Layout (Makhana only) */}
+          <div className="max-w-4xl mx-auto mb-16">
             <FadeIn>
-              <div className="bg-brand-green-dark text-brand-cream rounded-[2rem] p-8 md:p-10 border border-brand-gold/30 shadow-xl relative overflow-hidden group hover:shadow-2xl hover:shadow-brand-green/20 transition-all duration-500 h-full flex flex-col justify-between">
-                {/* Visual Shimmer/Glow background effect */}
-                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-brand-green to-brand-green-dark opacity-60" />
+              <div className="bg-brand-green-dark text-brand-cream rounded-[2.5rem] p-8 md:p-12 border border-brand-gold/30 shadow-premium-lg relative overflow-hidden group hover:shadow-premium-gold hover:shadow-2xl transition-all duration-500 flex flex-col justify-between min-h-[460px]">
+                {/* Subtle Background Radial Shine */}
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-brand-green to-brand-green-dark opacity-60 pointer-events-none" />
                 
-                <div className="relative z-10">
-                  <div className="flex justify-between items-center mb-6">
-                    <span className="inline-block bg-brand-gold text-brand-green text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">
-                      Flagship Collection
-                    </span>
-                    <span className="text-[10px] text-brand-gold uppercase tracking-wider font-semibold">
-                      Featured
-                    </span>
-                  </div>
-
-                  {/* Product Image Frame */}
-                  <div className="relative aspect-[4/3] w-full rounded-2xl overflow-hidden bg-brand-green border border-brand-gold/20 mb-6 group-hover:scale-[0.98] transition-transform duration-500">
-                    <img 
-                      src="/makhana (2).png" 
-                      alt="Makhana" 
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-brand-green-dark/20 to-transparent" />
-                  </div>
-
-                  <h3 className="font-serif text-3xl text-brand-gold mb-1 font-medium">
-                    Makhana
-                  </h3>
-                  <p className="font-sans text-xs uppercase tracking-widest text-brand-gold/80 mb-4 font-semibold">
-                    Signature Superfood
-                  </p>
-                  <p className="font-sans text-sm text-brand-cream/80 leading-relaxed mb-6">
-                    Sourced directly from agricultural heartlands and popped by traditional roasting masters. Infused with natural gourmet spice recipes for an unmatched, healthy crunch.
-                  </p>
-                </div>
-
-                <div className="border-t border-brand-cream/10 pt-6 mt-auto relative z-10">
-                  <div className="flex flex-wrap gap-2">
-                    {['100% Traceable', 'Jumbo 18-20mm', 'Gluten Free'].map((feat, fidx) => (
-                      <span key={fidx} className="text-[10px] font-sans text-brand-gold border border-brand-gold/20 rounded-full px-2.5 py-1 bg-brand-green/30">
-                        {feat}
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center relative z-10 w-full my-auto">
+                  {/* Left text */}
+                  <div className="md:col-span-7 flex flex-col gap-6 text-left">
+                    <div className="flex gap-2 items-center">
+                      <span className="inline-block bg-brand-gold text-brand-green text-[9px] font-bold uppercase tracking-widest px-3.5 py-1.5 rounded-full shadow-inner">
+                        Flagship Collection
                       </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </FadeIn>
-
-            {/* Jackfruit Chips Card - Light Cream Styling */}
-            <FadeIn delay={0.2}>
-              <div className="bg-brand-cream/35 hover:bg-white rounded-[2rem] p-8 md:p-10 border border-brand-cream-dark hover:border-brand-gold/30 shadow-sm hover:shadow-xl transition-all duration-500 h-full flex flex-col justify-between group">
-                <div>
-                  <div className="flex justify-between items-center mb-6">
-                    <span className="text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-brand-cream-dark text-brand-charcoal/60">
-                      Upcoming Collection
-                    </span>
-                    <span className="text-[10px] font-sans text-brand-gold uppercase tracking-wider font-semibold">
-                      New Crop
-                    </span>
-                  </div>
-
-                  {/* Product Image Frame */}
-                  <div className="relative aspect-[4/3] w-full rounded-2xl overflow-hidden bg-brand-cream-dark border border-brand-cream-dark mb-6 group-hover:scale-[0.98] transition-transform duration-500">
-                    <img 
-                      src="/jack_chips (2).png" 
-                      alt="Jackfruit Chips" 
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-brand-green/5 mix-blend-multiply pointer-events-none" />
-                  </div>
-
-                  <h3 className="font-serif text-3xl text-brand-green mb-1 font-medium group-hover:text-brand-gold transition-colors duration-300">
-                    Jackfruit Chips
-                  </h3>
-                  <p className="font-sans text-xs uppercase tracking-wider text-brand-charcoal/50 mb-4 font-semibold">
-                    Vacuum-Cooked Crisp
-                  </p>
-                  <p className="font-sans text-sm text-brand-charcoal/70 leading-relaxed mb-6">
-                    Crispy vacuum-cooked jackfruit slices that preserve natural color, vitamins, and sweet tropical flavors using minimal clean oil.
-                  </p>
-                </div>
-
-                <div className="border-t border-brand-cream-dark pt-6 mt-auto">
-                  <div className="flex flex-wrap gap-2">
-                    {['Vacuum Cooked', 'High Natural Fiber', 'Zero Preservatives'].map((feat, fidx) => (
-                      <span key={fidx} className="text-[10px] font-sans text-brand-charcoal/60 bg-brand-cream-dark/50 rounded-full px-2.5 py-1">
-                        {feat}
+                      <span className="text-[10px] text-brand-gold uppercase tracking-wider font-extrabold flex items-center gap-1">
+                        <Star size={10} className="fill-current" />
+                        Featured
                       </span>
-                    ))}
+                    </div>
+
+                    <h3 className="font-serif text-4xl md:text-5xl text-brand-gold font-medium leading-[1.05]">
+                      Makhana
+                    </h3>
+                    <p className="font-sans text-xs uppercase tracking-widest text-brand-gold/80 font-bold -mt-3">
+                      Signature Superfood
+                    </p>
+                    <p className="font-sans text-sm text-brand-cream/80 leading-relaxed">
+                      Sourced directly from agricultural heartlands and popped by traditional roasting masters. Infused with natural gourmet spice recipes for an unmatched, healthy crunch.
+                    </p>
+
+                    <div className="flex flex-wrap gap-2.5 mt-2">
+                      {['100% Traceable', 'Jumbo 18-20mm', 'Gluten Free'].map((feat, fidx) => (
+                        <span key={fidx} className="text-[10px] font-sans text-brand-gold border border-brand-gold/25 rounded-full px-3 py-1 bg-brand-green/30">
+                          {feat}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Right image with soft zoom */}
+                  <div className="md:col-span-5 flex items-center justify-center">
+                    <div className="relative aspect-square w-full max-w-[280px] rounded-3xl overflow-hidden bg-brand-green border border-brand-gold/20 shadow-premium-lg group-hover:scale-105 transition-transform duration-700">
+                      <img 
+                        src="/makhana (2).png" 
+                        alt="Premium Makhana Package" 
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:rotate-2"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-brand-green-dark/20 to-transparent" />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -244,28 +378,188 @@ export default function Home() {
           </div>
 
           {/* Button to Products Page */}
-          <div className="flex justify-center">
+          <div className="flex justify-center mt-12">
             <FadeIn delay={0.3}>
-              <Link 
+              <Link
                 href="/products"
-                className="group flex items-center justify-center gap-2 bg-brand-green text-brand-cream font-sans text-xs uppercase tracking-widest px-8 py-4.5 rounded-full hover:bg-brand-gold hover:text-brand-green transition-all duration-300 font-bold shadow-md shadow-brand-green/10"
+                className="btn-primary"
               >
-                View Products Collection
-                <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-300" />
+                <span>View Products Collection</span>
+                <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-300 relative z-10" />
               </Link>
             </FadeIn>
           </div>
         </div>
       </section>
 
+      {/* FLAVOUR SHOWCASE SECTION */}
+      <section className="py-16 lg:py-20 bg-brand-cream/15 px-6 border-b border-brand-cream-dark relative">
+        <div className="max-w-7xl mx-auto">
+          {/* Header */}
+          <div className="text-center max-w-3xl mx-auto mb-10">
+            <FadeIn>
+              <span className="font-sans text-xs uppercase tracking-[0.25em] font-extrabold text-brand-gold">
+                Sensory Experience
+              </span>
+              <h2 className="text-5xl md:text-6xl font-serif text-brand-green mt-4 mb-6 leading-tight">
+                Gourmet Flavor Collections
+              </h2>
+              <div className="h-[2px] w-20 bg-brand-gold mx-auto mb-8" />
+
+              {/* Category Selector Tabs */}
+              <div className="flex gap-2 bg-brand-cream p-1.5 rounded-full border border-brand-cream-dark w-fit mx-auto shadow-premium-sm">
+                <button
+                  onClick={() => setActiveFlavourTab('traditional')}
+                  className={`px-8 py-3 rounded-full text-xs uppercase tracking-widest transition-all duration-300 ${activeFlavourTab === 'traditional'
+                    ? 'btn-tab-active'
+                    : 'btn-tab-inactive'
+                    }`}
+                >
+                  Traditional Collection
+                </button>
+                <button
+                  onClick={() => setActiveFlavourTab('international')}
+                  className={`px-8 py-3 rounded-full text-xs uppercase tracking-widest transition-all duration-300 ${activeFlavourTab === 'international'
+                    ? 'btn-tab-active'
+                    : 'btn-tab-inactive'
+                    }`}
+                >
+                  International Collection
+                </button>
+              </div>
+            </FadeIn>
+          </div>
+
+          {/* Flavors Grid with Animations */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+            <AnimatePresence mode="wait">
+              {(activeFlavourTab === 'traditional' ? traditionalFlavors : internationalFlavors).map((flav, idx) => (
+                <motion.div
+                  key={flav.name}
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -15 }}
+                  transition={{ duration: 0.4, delay: idx * 0.08 }}
+                  className={`relative p-8 rounded-3xl bg-white border border-brand-cream-dark shadow-premium-sm hover:shadow-premium-lg hover:border-brand-gold/45 hover:-translate-y-2 transition-all duration-500 overflow-hidden group flex flex-col justify-between h-full`}
+                >
+                  {/* Custom Gradient Background Glow */}
+                  <div className={`absolute inset-0 bg-gradient-to-tr ${flav.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none`} />
+
+                  <div className="relative z-10 text-left">
+                    <div className="flex justify-between items-center mb-6">
+                      <div className="w-10 h-10 rounded-2xl bg-brand-green/5 text-brand-green flex items-center justify-center group-hover:bg-brand-green group-hover:text-brand-cream transition-colors duration-300">
+                        <flav.icon size={16} />
+                      </div>
+                      <span className="text-[9px] font-sans text-brand-gold uppercase tracking-wider font-extrabold">
+                        Profile
+                      </span>
+                    </div>
+
+                    <h3 className="font-serif text-2xl text-brand-green mb-1 group-hover:text-brand-gold transition-colors duration-300 font-medium">
+                      {flav.name}
+                    </h3>
+                    <p className="font-sans text-[10px] uppercase tracking-wider text-brand-charcoal/50 mb-4 font-bold">
+                      {flav.tagline}
+                    </p>
+                    <p className="font-sans text-xs text-brand-charcoal/70 leading-relaxed">
+                      {flav.desc}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </div>
+        </div>
+      </section>
+
+      {/* FUTURE PRODUCTS (ZIG-ZAG SHOWCASE) */}
+      <section className="py-16 lg:py-20 bg-white px-6 border-b border-brand-cream-dark relative">
+        <div className="max-w-7xl mx-auto">
+          {/* Header */}
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <FadeIn>
+              <span className="font-sans text-xs uppercase tracking-[0.25em] font-extrabold text-brand-gold">
+                Pipeline R&D
+              </span>
+              <h2 className="text-5xl md:text-6xl font-serif text-brand-green mt-4 mb-6 leading-tight">
+                Future Product Innovations
+              </h2>
+              <div className="h-[2px] w-20 bg-brand-gold mx-auto" />
+            </FadeIn>
+          </div>
+
+          {/* Alternating Zig-Zag Layout */}
+          <div className="flex flex-col gap-14 max-w-6xl mx-auto">
+            {futureProducts.map((prod, idx) => {
+              const isEven = idx % 2 === 0;
+              return (
+                <div
+                  key={prod.title}
+                  className={`grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center ${isEven ? '' : 'lg:flex-row-reverse'
+                    }`}
+                >
+                  {/* Visual Illustration Column */}
+                  <div className={`lg:col-span-5 ${isEven ? 'lg:order-1' : 'lg:order-2'}`}>
+                    <FadeIn direction={isEven ? 'left' : 'right'}>
+                      <div className={`relative aspect-square w-full max-w-[340px] mx-auto rounded-[2rem] overflow-hidden border border-brand-cream-dark p-6 shadow-premium-md hover:shadow-premium-lg transition-shadow duration-500 bg-gradient-to-tr ${prod.gradient} group`}>
+                        <img
+                          src={prod.image}
+                          alt={prod.title}
+                          className="w-full h-full object-contain animate-float-slow group-hover:scale-105 transition-transform duration-700"
+                        />
+                      </div>
+                    </FadeIn>
+                  </div>
+
+                  {/* Text details Column */}
+                  <div className={`lg:col-span-7 ${isEven ? 'lg:order-2' : 'lg:order-1'} flex flex-col gap-6 text-left`}>
+                    <FadeIn delay={0.1}>
+                      <div className="flex gap-2 items-center">
+                        <span className="inline-block bg-brand-gold/15 text-brand-gold border border-brand-gold/20 text-[9px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">
+                          {prod.tagline}
+                        </span>
+                      </div>
+                      <h3 className="font-serif text-3xl md:text-4xl text-brand-green font-medium mt-2">
+                        {prod.title}
+                      </h3>
+                      <p className="font-sans text-sm text-brand-charcoal/70 leading-relaxed">
+                        {prod.desc}
+                      </p>
+
+                      <div className="flex flex-wrap gap-2.5 mt-2">
+                        {prod.features.map((feat, fidx) => (
+                          <span key={fidx} className="text-[10px] font-sans text-brand-green border border-brand-green/20 rounded-full px-3 py-1 bg-brand-cream/50">
+                            {feat}
+                          </span>
+                        ))}
+                      </div>
+
+                      <div className="mt-4">
+                        <Link
+                          href="/products"
+                          className="btn-primary !px-6 !py-3.5"
+                        >
+                          <span>Learn More</span>
+                          <ArrowRight size={12} className="group-hover:translate-x-0.5 transition-transform duration-300 relative z-10" />
+                        </Link>
+                      </div>
+                    </FadeIn>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
       {/* SOURCING & PROCESSING CTA SECTION */}
-      <section className="py-24 bg-brand-cream/35 px-6 border-b border-brand-cream-dark relative overflow-hidden">
+      <section className="py-16 lg:py-20 bg-brand-cream/35 px-6 border-b border-brand-cream-dark relative overflow-hidden">
         {/* Decorative subtle background design elements */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,_var(--tw-gradient-stops))] from-brand-gold/10 via-transparent to-transparent opacity-60" />
-        
+
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <FadeIn>
-            <span className="font-sans text-xs uppercase tracking-[0.2em] font-bold text-brand-gold">
+            <span className="font-sans text-xs uppercase tracking-[0.25em] font-extrabold text-brand-gold">
               Traceability & Sourcing Excellence
             </span>
             <h2 className="text-4xl md:text-5xl font-serif text-brand-green mt-4 mb-6 leading-tight">
@@ -277,15 +571,17 @@ export default function Home() {
             <div className="flex justify-center">
               <Link
                 href="/processing"
-                className="group flex items-center justify-center gap-2 bg-brand-green text-brand-cream font-sans text-xs uppercase tracking-widest px-8 py-4.5 rounded-full hover:bg-brand-gold hover:text-brand-green transition-all duration-300 font-bold shadow-md shadow-brand-green/10"
+                className="btn-primary"
               >
-                Explore Sourcing & Processing Timeline
-                <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-300" />
+                <span>Explore Sourcing & Processing Timeline</span>
+                <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-300 relative z-10" />
               </Link>
             </div>
           </FadeIn>
         </div>
       </section>
+
+
     </div>
   );
 }
