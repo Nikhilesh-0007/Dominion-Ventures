@@ -30,9 +30,9 @@ export default function LoadingScreen() {
       {!isLoaded && (
         <motion.div
           initial={{ opacity: 1 }}
-          exit={{ 
+          exit={{
             y: '-100vh',
-            transition: { duration: 1, ease: [0.76, 0, 0.24, 1] } 
+            transition: { duration: 1, ease: [0.76, 0, 0.24, 1] }
           }}
           className="fixed inset-0 z-50 flex flex-col justify-between p-8 bg-brand-green text-brand-cream"
         >
@@ -55,9 +55,9 @@ export default function LoadingScreen() {
               transition={{ duration: 1.2, ease: "easeOut" }}
               className="mb-8 w-24 h-24 flex items-center justify-center"
             >
-              <img 
-                src="/logo.png" 
-                alt="Dominion Ventures Logo" 
+              <img
+                src="/logo.png"
+                alt="Dominion Ventures Logo"
                 className="w-full h-full object-contain"
               />
             </motion.div>
@@ -91,7 +91,7 @@ export default function LoadingScreen() {
                 />
               </div>
             </div>
-            
+
             <div className="flex items-baseline gap-2">
               <span className="font-serif text-6xl md:text-8xl font-light text-brand-gold">
                 {progress}

@@ -25,13 +25,13 @@ export default function Footer() {
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 pb-10 border-b border-brand-cream/10">
-          
+
           {/* Column 1: Brand Info */}
           <div className="lg:col-span-5 flex flex-col gap-8">
             <Link href="/" className="flex items-center gap-3 group w-fit">
-              <img 
-                src="/logo.png" 
-                alt="Dominion Ventures Logo" 
+              <img
+                src="/logo.png"
+                alt="Dominion Ventures Logo"
                 className="w-12 h-12 object-contain transition-transform duration-700 group-hover:scale-105"
               />
               <div className="flex flex-col">
@@ -43,7 +43,7 @@ export default function Footer() {
                 </span>
               </div>
             </Link>
-            
+
             <p className="font-sans text-sm text-brand-cream/70 max-w-sm leading-relaxed">
               Elevating traditional nutrition and functional foods into premium, globally celebrated snacking experiences. Crafted with integrity, backed by science.
             </p>

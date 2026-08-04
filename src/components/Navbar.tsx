@@ -38,18 +38,17 @@ export default function Navbar() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 w-full z-40 transition-all duration-500 ${
-          scrolled
-            ? 'bg-white/85 backdrop-blur-md shadow-md border-b border-brand-cream-dark/60 py-4'
-            : 'bg-transparent py-6'
-        }`}
+        className={`fixed top-0 left-0 w-full z-40 transition-all duration-500 ${scrolled
+          ? 'bg-white/85 backdrop-blur-md shadow-md border-b border-brand-cream-dark/60 py-4'
+          : 'bg-transparent py-6'
+          }`}
       >
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group">
-            <img 
-              src="/logo.png" 
-              alt="Dominion Ventures Logo" 
+            <img
+              src="/logo.png"
+              alt="Dominion Ventures Logo"
               className="w-11 h-11 object-contain transition-transform duration-700 group-hover:scale-105"
             />
             <div className="flex flex-col">
@@ -70,9 +69,8 @@ export default function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`relative font-sans text-xs uppercase tracking-[0.2em] font-bold transition-all duration-300 ${
-                    isActive ? 'text-brand-green' : 'text-brand-charcoal/70 hover:text-brand-green'
-                  }`}
+                  className={`relative font-sans text-xs uppercase tracking-[0.2em] font-bold transition-all duration-300 ${isActive ? 'text-brand-green' : 'text-brand-charcoal/70 hover:text-brand-green'
+                    }`}
                 >
                   {link.label}
                   {isActive && (
@@ -126,9 +124,8 @@ export default function Navbar() {
                   <Link
                     key={link.href}
                     href={link.href}
-                    className={`font-serif text-4xl tracking-wide transition-colors duration-300 ${
-                      isActive ? 'text-brand-gold font-medium' : 'text-brand-green hover:text-brand-gold'
-                    }`}
+                    className={`font-serif text-4xl tracking-wide transition-colors duration-300 ${isActive ? 'text-brand-gold font-medium' : 'text-brand-green hover:text-brand-gold'
+                      }`}
                   >
                     {link.label}
                   </Link>
