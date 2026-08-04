@@ -50,13 +50,19 @@ export default function Footer() {
 
             {/* Social Links */}
             <div className="flex gap-4 items-center mt-2">
-              <a href="#" className="w-10 h-10 rounded-full border border-brand-cream/15 flex items-center justify-center text-brand-cream/60 hover:text-brand-gold hover:border-brand-gold hover:scale-110 transition-all duration-300">
+              <a 
+                href="https://www.instagram.com/dominion_ventures_official_?igsh=YWtreThubWhlZGcz" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="w-10 h-10 rounded-full border border-brand-cream/15 flex items-center justify-center text-brand-cream/60 hover:text-brand-gold hover:border-brand-gold hover:scale-110 transition-all duration-300"
+                aria-label="Instagram"
+              >
                 <Instagram size={16} />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full border border-brand-cream/15 flex items-center justify-center text-brand-cream/60 hover:text-brand-gold hover:border-brand-gold hover:scale-110 transition-all duration-300">
+              <a href="#" className="w-10 h-10 rounded-full border border-brand-cream/15 flex items-center justify-center text-brand-cream/60 hover:text-brand-gold hover:border-brand-gold hover:scale-110 transition-all duration-300" aria-label="LinkedIn">
                 <Linkedin size={16} />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full border border-brand-cream/15 flex items-center justify-center text-brand-cream/60 hover:text-brand-gold hover:border-brand-gold hover:scale-110 transition-all duration-300">
+              <a href="#" className="w-10 h-10 rounded-full border border-brand-cream/15 flex items-center justify-center text-brand-cream/60 hover:text-brand-gold hover:border-brand-gold hover:scale-110 transition-all duration-300" aria-label="Twitter">
                 <Twitter size={16} />
               </a>
             </div>
@@ -75,22 +81,23 @@ export default function Footer() {
             </nav>
           </div>
 
-          {/* Column 3: Newsletter & Contact Details */}
+          {/* Column 3: Contact Details */}
           <div className="lg:col-span-4 flex flex-col gap-8">
-
-
-            <div className="flex flex-col gap-3 text-xs text-brand-cream/60 border-t border-brand-cream/10 pt-6">
+            <span className="font-sans text-xs uppercase tracking-[0.25em] text-brand-gold font-extrabold">
+              Contact Us
+            </span>
+            <div className="flex flex-col gap-3 text-xs text-brand-cream/60">
               <div className="flex items-center gap-3">
-                <Mail size={12} className="text-brand-gold shrink-0" />
-                <a href="mailto:info@dominionventures.in" className="hover:text-brand-gold transition-colors duration-300">info@dominionventures.in</a>
+                <Mail size={14} className="text-brand-gold shrink-0" />
+                <a href="mailto:sravenseven555@gmail.com" className="hover:text-brand-gold transition-colors duration-300">sravenseven555@gmail.com</a>
               </div>
               <div className="flex items-center gap-3">
-                <Phone size={12} className="text-brand-gold shrink-0" />
-                <span>+91 98765 43210</span>
+                <Phone size={14} className="text-brand-gold shrink-0" />
+                <a href="tel:+919391214224" className="hover:text-brand-gold transition-colors duration-300">+91 9391214224</a>
               </div>
               <div className="flex items-start gap-3">
-                <MapPin size={12} className="text-brand-gold mt-0.5 shrink-0" />
-                <span className="leading-relaxed">Executive Office, Level 4, Brigade Signature Towers, Katamanallur Cross, Old Madras Rd, Bengaluru, Karnataka - 560049</span>
+                <MapPin size={14} className="text-brand-gold mt-0.5 shrink-0" />
+                <span className="leading-relaxed">DOMINION VENTURES, H.No:7-46, Old Malkajgiri, Malkajgiri, Medchel, Telangana - India.</span>
               </div>
             </div>
           </div>
