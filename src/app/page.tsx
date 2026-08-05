@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
@@ -10,6 +10,7 @@ import {
 } from 'lucide-react';
 import FadeIn from '@/components/FadeIn';
 import { products } from '@/data/products';
+import { ensureInfographicImages } from '@/app/actions';
 
 // Core pillars (floating glass cards)
 const corePillars = [
@@ -123,7 +124,7 @@ const internationalFlavors = [
 const futureProducts = [
   {
     id: 'ice-cream',
-    title: 'Next-Gen Ice Cream',
+    title: 'Flavorette, The Malt edition icecream',
     tagline: 'Model 1, 2 & 3 Servings',
     desc: 'Anatomically sculpted fruit gelato shells encasing fresh berry sorbets, ultra-viscous shake layers separating rich pistachio creams, and interactive painter\'s palette plating concepts.',
     image: '/next_gen_ice (2).png',
@@ -132,7 +133,7 @@ const futureProducts = [
   },
   {
     id: 'soda',
-    title: 'Functional Soda',
+    title: 'The Gulp , Pop ( fruit flavoured soda )',
     tagline: 'Prebiotic & Probiotic Soda',
     desc: 'Guilt-free alternative to traditional HFCS soft drinks. Formulated with gut-microbiome prebiotic fibers, probiotic proteins, and organic botanical caffeine from tea sources.',
     image: '/Functional Soda.png',
@@ -141,7 +142,7 @@ const futureProducts = [
   },
   {
     id: 'water',
-    title: 'Enhanced Longevity Water',
+    title: 'Enhance longevity ( Vit+ Min) water',
     tagline: 'Bioactive Synergy Hydration',
     desc: 'Advanced water-soluble delivery mechanism infused with scientifically validated synergistic pairings (Vitamin D3 + Magnesium + K2) to optimize cellular repair and systemic health span.',
     image: '/water (2).png',
@@ -150,7 +151,7 @@ const futureProducts = [
   },
   {
     id: 'jackfruit-chips',
-    title: 'Jackfruit Chips',
+    title: 'pure crunch Jackfruit chips.',
     tagline: 'Vacuum-Cooked Sustainable Snack',
     desc: 'Crispy vacuum-cooked jackfruit slices that minimize agricultural post-harvest waste and provide a healthier, low-fat alternative to traditional potato chips across 190 nations.',
     image: '/jack_chips (2).png',
@@ -184,6 +185,11 @@ const testimonials = [
 export default function Home() {
   const [activeTestimonialIdx, setActiveTestimonialIdx] = useState(0);
   const [isReportModalOpen, setIsReportModalOpen] = useState(false);
+  const [selectedInfographic, setSelectedInfographic] = useState<{ title: string; image: string } | null>(null);
+
+  useEffect(() => {
+    ensureInfographicImages();
+  }, []);
 
   const makhanaProduct = products.find(p => p.id === 'makhana');
 
@@ -304,6 +310,107 @@ export default function Home() {
         </div>
       </section>
 
+      {/* BRAND & FMCG FRAMEWORK INFOGRAPHICS SECTION */}
+      <section className="py-20 lg:py-24 bg-[#FAF9F6] px-6 border-b border-brand-cream-dark relative">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center max-w-3xl mx-auto mb-14">
+            <FadeIn>
+              <span className="font-sans text-xs uppercase tracking-[0.25em] font-extrabold text-brand-gold">
+                Strategic Foundation
+              </span>
+              <h2 className="text-4xl sm:text-5xl md:text-6xl font-serif text-brand-green mt-3 mb-6 leading-tight">
+                Frameworks Driving Our Growth
+              </h2>
+              <p className="font-sans text-sm md:text-base text-brand-charcoal/75 leading-relaxed">
+                At Dominion Ventures, our product engineering and brand execution follow systematic FMCG principles and end-to-end consumer journey strategies.
+              </p>
+              <div className="h-[2px] w-20 bg-brand-gold mx-auto mt-6" />
+            </FadeIn>
+          </div>
+
+          {/* 2-Column Infographics Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-stretch">
+            {/* Framework 1: Product in FMCG */}
+            <FadeIn delay={0.1}>
+              <div className="bg-white rounded-3xl p-6 sm:p-8 border border-brand-cream-dark shadow-sm hover:shadow-premium-lg transition-all duration-500 flex flex-col justify-between h-full group">
+                <div>
+                  <div className="flex justify-between items-center mb-4">
+                    <span className="inline-block bg-brand-green/10 text-brand-green border border-brand-green/20 text-[10px] font-extrabold uppercase tracking-widest px-3 py-1 rounded-full">
+                      FMCG Strategy
+                    </span>
+                    <span className="text-[10px] text-brand-gold font-sans uppercase tracking-wider font-extrabold">
+                      Click to Enlarge
+                    </span>
+                  </div>
+
+                  <h3 className="font-serif text-2xl sm:text-3xl text-brand-green font-medium mb-3">
+                    Product In FMCG
+                  </h3>
+                  <p className="font-sans text-xs text-brand-charcoal/70 leading-relaxed mb-6">
+                    Building products people trust and love every day — encompassing Strategy, Product Attributes, Lifecycle, Packaging & Labelling, Positioning, and Supply Chain Resilience.
+                  </p>
+
+                  <div 
+                    onClick={() => setSelectedInfographic({ title: 'Product In FMCG Framework', image: '/fmcg_product_framework.jpg' })}
+                    className="relative aspect-[3/4] w-full rounded-2xl overflow-hidden border border-brand-cream-dark bg-brand-cream/30 shadow-inner cursor-pointer group-hover:border-brand-gold/50 transition-all duration-500"
+                  >
+                    <img
+                      src="/fmcg_product_framework.jpg"
+                      alt="Product in FMCG Infographic"
+                      className="w-full h-full object-contain p-2 group-hover:scale-105 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-brand-green/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
+                      <span className="bg-brand-green text-brand-gold text-xs font-sans font-bold uppercase tracking-widest px-4 py-2 rounded-full shadow-lg">
+                        View Full Screen
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </FadeIn>
+
+            {/* Framework 2: Running a Brand */}
+            <FadeIn delay={0.2}>
+              <div className="bg-white rounded-3xl p-6 sm:p-8 border border-brand-cream-dark shadow-sm hover:shadow-premium-lg transition-all duration-500 flex flex-col justify-between h-full group">
+                <div>
+                  <div className="flex justify-between items-center mb-4">
+                    <span className="inline-block bg-brand-gold/15 text-brand-gold border border-brand-gold/30 text-[10px] font-extrabold uppercase tracking-widest px-3 py-1 rounded-full">
+                      Brand Operations
+                    </span>
+                    <span className="text-[10px] text-brand-gold font-sans uppercase tracking-wider font-extrabold">
+                      Click to Enlarge
+                    </span>
+                  </div>
+
+                  <h3 className="font-serif text-2xl sm:text-3xl text-brand-green font-medium mb-3">
+                    Running A Brand
+                  </h3>
+                  <p className="font-sans text-xs text-brand-charcoal/70 leading-relaxed mb-6">
+                    Comprehensive operational ecosystem — connecting Brand Story, Brand Promise, Consumer Knowledge, Product Innovation, Operations, Purchase Moments, Experience & Culture.
+                  </p>
+
+                  <div 
+                    onClick={() => setSelectedInfographic({ title: 'Running A Brand Framework', image: '/running_a_brand_framework.jpg' })}
+                    className="relative aspect-[3/4] w-full rounded-2xl overflow-hidden border border-brand-cream-dark bg-brand-cream/30 shadow-inner cursor-pointer group-hover:border-brand-gold/50 transition-all duration-500"
+                  >
+                    <img
+                      src="/running_a_brand_framework.jpg"
+                      alt="Running A Brand Infographic"
+                      className="w-full h-full object-contain p-2 group-hover:scale-105 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-brand-green/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
+                      <span className="bg-brand-green text-brand-gold text-xs font-sans font-bold uppercase tracking-widest px-4 py-2 rounded-full shadow-lg">
+                        View Full Screen
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </FadeIn>
+          </div>
+        </div>
+      </section>
+
       {/* PRODUCT PORTFOLIO SECTION */}
       <section id="products" className="py-16 lg:py-20 bg-white px-6 border-b border-brand-cream-dark relative">
         <div className="max-w-7xl mx-auto">
@@ -341,7 +448,7 @@ export default function Home() {
                     </div>
 
                     <h3 className="font-serif text-4xl md:text-5xl text-brand-gold font-medium leading-[1.05]">
-                      Makhana
+                      Nu trait Makhana
                     </h3>
                     <p className="font-sans text-xs uppercase tracking-widest text-brand-gold/80 font-bold -mt-3">
                       Signature Superfood
@@ -789,6 +896,36 @@ export default function Home() {
             <div className="bg-brand-cream-dark p-4 md:p-6 border-t border-brand-cream-dark flex flex-col sm:flex-row gap-3 justify-between items-center text-[10px] text-brand-charcoal/50 font-sans font-bold uppercase tracking-widest flex-shrink-0">
               <span>Dominion Ventures Quality Assurance</span>
               <span>Report ID: DV-MX-2026-A</span>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* INFOGRAPHIC LIGHTBOX MODAL */}
+      {selectedInfographic && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8 animate-fade-in">
+          <div
+            className="absolute inset-0 bg-black/80 backdrop-blur-md transition-opacity duration-300"
+            onClick={() => setSelectedInfographic(null)}
+          />
+          <div className="bg-[#FAF9F6] border border-brand-gold/30 rounded-[2rem] w-full max-w-4xl max-h-[90vh] overflow-hidden shadow-2xl relative z-10 flex flex-col">
+            <div className="bg-brand-green text-brand-cream p-5 md:p-6 flex justify-between items-center shrink-0">
+              <h3 className="font-serif text-2xl text-brand-gold font-medium">
+                {selectedInfographic.title}
+              </h3>
+              <button
+                onClick={() => setSelectedInfographic(null)}
+                className="text-brand-cream/80 hover:text-brand-gold font-sans text-xs tracking-wider uppercase border border-brand-cream/20 rounded-full px-4 py-1.5 bg-white/10 transition-colors cursor-pointer"
+              >
+                Close
+              </button>
+            </div>
+            <div className="p-4 md:p-6 overflow-y-auto flex items-center justify-center bg-black/5">
+              <img
+                src={selectedInfographic.image}
+                alt={selectedInfographic.title}
+                className="max-h-[75vh] w-auto object-contain rounded-xl shadow-lg"
+              />
             </div>
           </div>
         </div>

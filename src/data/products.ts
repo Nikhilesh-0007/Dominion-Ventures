@@ -36,7 +36,7 @@ export interface Product {
 export const products: Product[] = [
   {
     id: "makhana",
-    name: "Makhana",
+    name: "Nu trait Makhana",
     category: "Traditional",
     description: "Our flagship superfood collection. Sourced from agricultural heartlands, slow dry-roasted, and infused with premium regional spices.",
     nutritionalHighlights: ["100% Traceable", "Jumbo Kernels", "Gluten Free", "High Protein"],
@@ -106,7 +106,7 @@ export const products: Product[] = [
   },
   {
     id: "ice-cream",
-    name: "Next-Gen Ice Cream",
+    name: "Flavorette, The Malt edition icecream",
     category: "International",
     description: "Creamy, premium functional desserts featuring sculpted anatomical fruit reproduction and interactive palettes.",
     nutritionalHighlights: ["Zero Refined Sugar", "Anatomically Sculpted", "Plant Protein Options", "Zero Waste Portions"],
@@ -130,7 +130,7 @@ export const products: Product[] = [
               ["Strawberry / Raspberry", "Fresh Berry Sorbet", "Matte red with seed pitting detail", "Tart, sweet, aromatic berry blend"],
               ["Blackberry / Grape", "Concord Grape / Acai Gelato", "Soft purple velvet spray finish", "Rich, deep wine-like fruit notes"],
               ["Mango / Citrus", "Alphonso Mango Gelato", "Vibrant glossy yellow-orange shell", "Tropical, creamy citrus profile"],
-              ["Blueberry / Plum", "Wild Blueberry Gelato", "Pastel indigo shell coating", "Subtle sweet-tart balance"]
+              ["Blueberry / Plum", "Pastel indigo shell coating", "Wild Blueberry Gelato", "Subtle sweet-tart balance"]
             ]
           }
         },
@@ -179,7 +179,7 @@ export const products: Product[] = [
   },
   {
     id: "soda",
-    name: "Functional Soda",
+    name: "The Gulp , Pop ( fruit flavoured soda )",
     category: "International",
     description: "Enhanced soda line replacing high-fructose syrups with prebiotic fibers, probiotic proteins, and organic juice.",
     nutritionalHighlights: ["Prebiotics & Probiotics", "Low Sugar (5g)", "Botanical Energy Boost", "Real Fruit Bases"],
@@ -251,7 +251,7 @@ export const products: Product[] = [
   },
   {
     id: "water",
-    name: "Enhanced Longevity Water",
+    name: "Enhance longevity ( Vit+ Min) water",
     category: "International",
     description: "Synergistic vitamin and mineral alkaline hydration water, optimized for intestinal absorption and cellular repair.",
     nutritionalHighlights: ["pH 8.5+ Alkaline", "Ionic Trace Minerals", "Active D3 + K2 Synergy", "Zero Sugar & Additives"],
@@ -315,7 +315,7 @@ export const products: Product[] = [
   },
   {
     id: "jackfruit-chips",
-    name: "Jackfruit Chips",
+    name: "pure crunch Jackfruit chips.",
     category: "Traditional",
     description: "Crispy vacuum-cooked jackfruit slices that minimize agricultural post-harvest waste and provide a healthier snacking alternative.",
     nutritionalHighlights: ["Vacuum Cooked", "High Natural Fiber", "GI Tag Sourced", "Low Fat Retention"],
