@@ -121,7 +121,7 @@ export default function ProductDetailPage() {
   }
 
   return (
-    <div className="py-8 px-6 bg-[#FAF9F6]">
+    <div className="py-12 px-6 bg-[#FAF9F6]">
       <div className="max-w-5xl mx-auto">
         {/* Back Button */}
         <div className="mb-8">

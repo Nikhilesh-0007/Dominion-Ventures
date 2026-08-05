@@ -204,7 +204,7 @@ export default function Home() {
   return (
     <div id="top" className="flex flex-col w-full bg-white relative">
       {/* HERO SECTION */}
-      <section className="relative min-h-[90vh] lg:h-[95vh] flex items-center overflow-hidden px-6 py-16 lg:py-20 bg-brand-cream">
+      <section className="relative min-h-[calc(100vh-5rem)] flex items-center overflow-hidden px-6 py-10 md:py-14 bg-white border-b border-brand-cream-dark">
         {/* Full-bleed Background Image with subtle parallax */}
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-100 transition-transform duration-[10s] ease-out scale-105 pointer-events-none"

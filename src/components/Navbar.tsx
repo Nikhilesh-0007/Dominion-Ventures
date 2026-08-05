@@ -46,16 +46,15 @@ export default function Navbar() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 w-full z-40 transition-all duration-500 bg-[#062C19] border-b border-brand-gold/30 ${
-          scrolled
+        className={`fixed top-0 left-0 w-full z-40 transition-all duration-500 bg-[#062C19] border-b border-brand-gold/30 ${scrolled
             ? 'py-3.5 shadow-xl bg-[#062C19]/95 backdrop-blur-md'
             : 'py-5'
-        }`}
+          }`}
       >
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
           {/* Logo */}
-          <Link 
-            href="#top" 
+          <Link
+            href="#top"
             onClick={(e) => handleNavClick(e, '#top', 'Home')}
             className="flex items-center gap-3 group"
           >
@@ -80,9 +79,8 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href, link.label)}
-                  className={`relative font-sans text-xs uppercase tracking-[0.2em] font-bold transition-all duration-300 cursor-pointer ${
-                    isActive ? 'text-brand-gold font-extrabold' : 'text-brand-cream/85 hover:text-brand-gold'
-                  }`}
+                  className={`relative font-sans text-xs uppercase tracking-[0.2em] font-bold transition-all duration-300 cursor-pointer ${isActive ? 'text-brand-gold font-extrabold' : 'text-brand-cream/85 hover:text-brand-gold'
+                    }`}
                 >
                   {link.label}
                   {isActive && (
@@ -126,9 +124,8 @@ export default function Navbar() {
                     key={link.href}
                     href={link.href}
                     onClick={(e) => handleNavClick(e, link.href, link.label)}
-                    className={`font-serif text-4xl tracking-wide transition-colors duration-300 cursor-pointer ${
-                      isActive ? 'text-brand-gold font-medium' : 'text-brand-cream hover:text-brand-gold'
-                    }`}
+                    className={`font-serif text-4xl tracking-wide transition-colors duration-300 cursor-pointer ${isActive ? 'text-brand-gold font-medium' : 'text-brand-cream hover:text-brand-gold'
+                      }`}
                   >
                     {link.label}
                   </a>
