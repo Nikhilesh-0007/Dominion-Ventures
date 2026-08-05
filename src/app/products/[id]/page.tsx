@@ -17,7 +17,7 @@ const productDetailsMap: Record<string, {
   }[];
 }> = {
   'ice-cream': {
-    title: "Flavorette, The Malt edition icecream",
+    title: "Flavorette, The Melt Edition icecream",
     category: "Gourmet Confectionery & Desserts",
     image: "/next_gen_ice (2).png",
     badge: "Anatomical Culinary Innovation",
@@ -41,7 +41,7 @@ const productDetailsMap: Record<string, {
     ]
   },
   'soda': {
-    title: "The Gulp , Pop ( fruit flavoured soda )",
+    title: "The Gulp, pop soda (fruit flavoured)",
     category: "Active Digestive Beverage",
     image: "/Functional Soda.png",
     badge: "Prebiotic & Probiotic Science",
@@ -58,7 +58,7 @@ const productDetailsMap: Record<string, {
     ]
   },
   'water': {
-    title: "Enhance longevity ( Vit+ Min) water",
+    title: "Enhanced longevity (Vit+Min) water",
     category: "Bioactive Cellular Hydration",
     image: "/water (2).png",
     badge: "Vitamins + Minerals Synergy",
@@ -75,7 +75,7 @@ const productDetailsMap: Record<string, {
     ]
   },
   'jackfruit-chips': {
-    title: "pure crunch Jackfruit chips.",
+    title: "Pure crunch Jackfruit chips.",
     category: "Sustainable Agriculture & Snacking",
     image: "/jack_chips (2).png",
     badge: "Vacuum Cooked & GI Tag Sourced",

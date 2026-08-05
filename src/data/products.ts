@@ -106,7 +106,7 @@ export const products: Product[] = [
   },
   {
     id: "ice-cream",
-    name: "Flavorette, The Malt edition icecream",
+    name: "Flavorette, The Melt Edition icecream",
     category: "International",
     description: "Creamy, premium functional desserts featuring sculpted anatomical fruit reproduction and interactive palettes.",
     nutritionalHighlights: ["Zero Refined Sugar", "Anatomically Sculpted", "Plant Protein Options", "Zero Waste Portions"],
@@ -179,7 +179,7 @@ export const products: Product[] = [
   },
   {
     id: "soda",
-    name: "The Gulp , Pop ( fruit flavoured soda )",
+    name: "The Gulp, pop soda (fruit flavoured)",
     category: "International",
     description: "Enhanced soda line replacing high-fructose syrups with prebiotic fibers, probiotic proteins, and organic juice.",
     nutritionalHighlights: ["Prebiotics & Probiotics", "Low Sugar (5g)", "Botanical Energy Boost", "Real Fruit Bases"],
@@ -251,7 +251,7 @@ export const products: Product[] = [
   },
   {
     id: "water",
-    name: "Enhance longevity ( Vit+ Min) water",
+    name: "Enhanced longevity (Vit+Min) water",
     category: "International",
     description: "Synergistic vitamin and mineral alkaline hydration water, optimized for intestinal absorption and cellular repair.",
     nutritionalHighlights: ["pH 8.5+ Alkaline", "Ionic Trace Minerals", "Active D3 + K2 Synergy", "Zero Sugar & Additives"],
@@ -315,7 +315,7 @@ export const products: Product[] = [
   },
   {
     id: "jackfruit-chips",
-    name: "pure crunch Jackfruit chips.",
+    name: "Pure crunch Jackfruit chips.",
     category: "Traditional",
     description: "Crispy vacuum-cooked jackfruit slices that minimize agricultural post-harvest waste and provide a healthier snacking alternative.",
     nutritionalHighlights: ["Vacuum Cooked", "High Natural Fiber", "GI Tag Sourced", "Low Fat Retention"],

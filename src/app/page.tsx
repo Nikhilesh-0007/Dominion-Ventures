@@ -124,7 +124,7 @@ const internationalFlavors = [
 const futureProducts = [
   {
     id: 'ice-cream',
-    title: 'Flavorette, The Malt edition icecream',
+    title: 'Flavorette, The Melt Edition icecream',
     tagline: 'Model 1, 2 & 3 Servings',
     desc: 'Anatomically sculpted fruit gelato shells encasing fresh berry sorbets, ultra-viscous shake layers separating rich pistachio creams, and interactive painter\'s palette plating concepts.',
     image: '/next_gen_ice (2).png',
@@ -133,7 +133,7 @@ const futureProducts = [
   },
   {
     id: 'soda',
-    title: 'The Gulp , Pop ( fruit flavoured soda )',
+    title: 'The Gulp, pop soda (fruit flavoured)',
     tagline: 'Prebiotic & Probiotic Soda',
     desc: 'Guilt-free alternative to traditional HFCS soft drinks. Formulated with gut-microbiome prebiotic fibers, probiotic proteins, and organic botanical caffeine from tea sources.',
     image: '/Functional Soda.png',
@@ -142,7 +142,7 @@ const futureProducts = [
   },
   {
     id: 'water',
-    title: 'Enhance longevity ( Vit+ Min) water',
+    title: 'Enhanced longevity (Vit+Min) water',
     tagline: 'Bioactive Synergy Hydration',
     desc: 'Advanced water-soluble delivery mechanism infused with scientifically validated synergistic pairings (Vitamin D3 + Magnesium + K2) to optimize cellular repair and systemic health span.',
     image: '/water (2).png',
@@ -151,7 +151,7 @@ const futureProducts = [
   },
   {
     id: 'jackfruit-chips',
-    title: 'pure crunch Jackfruit chips.',
+    title: 'Pure crunch Jackfruit chips.',
     tagline: 'Vacuum-Cooked Sustainable Snack',
     desc: 'Crispy vacuum-cooked jackfruit slices that minimize agricultural post-harvest waste and provide a healthier, low-fat alternative to traditional potato chips across 190 nations.',
     image: '/jack_chips (2).png',
@@ -208,7 +208,7 @@ export default function Home() {
         {/* Full-bleed Background Image with subtle parallax */}
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-100 transition-transform duration-[10s] ease-out scale-105 pointer-events-none"
-          style={{ backgroundImage: "url('/hero_img.png')" }}
+          style={{ backgroundImage: "url('/image.png')" }}
         />
         {/* Soft Radial Glow Gradient Behind Product */}
         <div className="absolute top-1/2 right-[15%] -translate-y-1/2 w-[550px] h-[550px] bg-brand-gold/20 rounded-full filter blur-[120px] pointer-events-none animate-soft-glow" />
