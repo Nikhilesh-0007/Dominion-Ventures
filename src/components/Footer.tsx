@@ -32,16 +32,13 @@ export default function Footer() {
               <img
                 src="/logo.png"
                 alt="Dominion Ventures Logo"
-                className="w-12 h-12 object-contain transition-transform duration-700 group-hover:scale-105"
+                className="w-11 h-11 object-contain transition-transform duration-700 group-hover:scale-105"
               />
-              <div className="flex flex-col">
-                <span className="font-serif text-2xl font-bold text-brand-cream tracking-wide uppercase leading-none">
-                  Dominion
-                </span>
-                <span className="font-sans text-[10px] uppercase tracking-[0.25em] text-brand-gold font-bold leading-none mt-1.5">
-                  Ventures
-                </span>
-              </div>
+              <img
+                src="/logo_text.png"
+                alt="Dominion Ventures"
+                className="h-10 md:h-11 w-auto object-contain transition-transform duration-700 group-hover:scale-105"
+              />
             </Link>
 
             <p className="font-sans text-sm text-brand-cream/70 max-w-sm leading-relaxed">

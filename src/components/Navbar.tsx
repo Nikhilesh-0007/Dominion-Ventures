@@ -46,10 +46,11 @@ export default function Navbar() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 w-full z-40 transition-all duration-500 ${scrolled
-          ? 'bg-white/85 backdrop-blur-md shadow-md border-b border-brand-cream-dark/60 py-4'
-          : 'bg-transparent py-6'
-          }`}
+        className={`fixed top-0 left-0 w-full z-40 transition-all duration-500 bg-[#062C19] border-b border-brand-gold/30 ${
+          scrolled
+            ? 'py-3.5 shadow-xl bg-[#062C19]/95 backdrop-blur-md'
+            : 'py-5'
+        }`}
       >
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
           {/* Logo */}
@@ -61,16 +62,13 @@ export default function Navbar() {
             <img
               src="/logo.png"
               alt="Dominion Ventures Logo"
-              className="w-11 h-11 object-contain transition-transform duration-700 group-hover:scale-105"
+              className="w-10 h-10 md:w-11 md:h-11 object-contain transition-transform duration-700 group-hover:scale-105"
             />
-            <div className="flex flex-col">
-              <span className="font-serif text-xl font-extrabold text-brand-green tracking-wide uppercase leading-none">
-                Dominion
-              </span>
-              <span className="font-sans text-[9px] uppercase tracking-[0.25em] text-brand-gold font-bold leading-none mt-1">
-                Ventures
-              </span>
-            </div>
+            <img
+              src="/logo_text.png"
+              alt="Dominion Ventures"
+              className="h-9 md:h-10 lg:h-11 w-auto object-contain transition-transform duration-700 group-hover:scale-105"
+            />
           </Link>
 
           {/* Desktop Nav Items (Home, Products, Contact Us) */}
@@ -82,8 +80,9 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href, link.label)}
-                  className={`relative font-sans text-xs uppercase tracking-[0.2em] font-bold transition-all duration-300 cursor-pointer ${isActive ? 'text-brand-green' : 'text-brand-charcoal/70 hover:text-brand-green'
-                    }`}
+                  className={`relative font-sans text-xs uppercase tracking-[0.2em] font-bold transition-all duration-300 cursor-pointer ${
+                    isActive ? 'text-brand-gold font-extrabold' : 'text-brand-cream/85 hover:text-brand-gold'
+                  }`}
                 >
                   {link.label}
                   {isActive && (
@@ -101,7 +100,7 @@ export default function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden text-brand-green p-1.5 hover:text-brand-gold transition-colors duration-300 rounded-full hover:bg-brand-cream"
+            className="lg:hidden text-brand-gold p-1.5 hover:text-brand-cream transition-colors duration-300 rounded-full hover:bg-white/10"
             aria-label="Toggle Menu"
           >
             {isOpen ? <X size={22} /> : <Menu size={22} />}
@@ -117,7 +116,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -15 }}
             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-0 bg-white/98 backdrop-blur-lg z-30 pt-28 px-8 flex flex-col justify-between pb-10 lg:hidden"
+            className="fixed inset-0 bg-[#062C19] text-brand-cream z-30 pt-28 px-8 flex flex-col justify-between pb-10 lg:hidden border-b border-brand-gold/30"
           >
             <div className="flex flex-col gap-6">
               {navLinks.map((link) => {
@@ -127,8 +126,9 @@ export default function Navbar() {
                     key={link.href}
                     href={link.href}
                     onClick={(e) => handleNavClick(e, link.href, link.label)}
-                    className={`font-serif text-4xl tracking-wide transition-colors duration-300 cursor-pointer ${isActive ? 'text-brand-gold font-medium' : 'text-brand-green hover:text-brand-gold'
-                      }`}
+                    className={`font-serif text-4xl tracking-wide transition-colors duration-300 cursor-pointer ${
+                      isActive ? 'text-brand-gold font-medium' : 'text-brand-cream hover:text-brand-gold'
+                    }`}
                   >
                     {link.label}
                   </a>
@@ -136,7 +136,7 @@ export default function Navbar() {
               })}
             </div>
 
-            <div className="border-t border-brand-cream-dark pt-8 text-center text-[10px] text-brand-charcoal/40 uppercase tracking-[0.2em] font-bold">
+            <div className="border-t border-brand-gold/20 pt-8 text-center text-[10px] text-brand-cream/50 uppercase tracking-[0.2em] font-bold">
               © 2026 Dominion Ventures
             </div>
           </motion.div>
