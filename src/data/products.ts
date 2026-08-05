@@ -53,53 +53,53 @@ export const products: Product[] = [
       sections: [
         {
           title: "OUR PROCESSING STANDARDS",
-          content: "We transform raw gorgon nut seeds into premium, ready-to-eat makhana through a strict, multi-stage quality control process:",
+          content: "We transform raw gorgon nut seeds into premium, ready-to-eat makhana through a strict, multi-stage quality control process.",
           bullets: [
-            "Ethical Sourcing: Partnership with local wetland cooperatives to ensure traceability.",
-            "Sun Drying: Naturally dried on elevated bamboo beds to preserve kernel density.",
-            "Grading & Sorting: Optical sorting separating out premium 18-20mm kernels.",
-            "Pre-Heating & Roasting: Conditions the starches for a flawless pop.",
-            "Manual Popping: Crafted by master poppers using wooden mallets.",
-            "Polishing: Cleaned gently to remove shell fragments."
+            "Ethical Sourcing",
+            "Sun Drying",
+            "Grading & Sorting",
+            "Pre-Heating & Roasting",
+            "Manual popping",
+            "Polishing"
           ]
         },
         {
           title: "ADVANCED PACKAGING SOLUTIONS",
-          content: "To maintain freshness and prevent spoilage, our packaging line utilizes cutting edge food preservation technology:",
+          content: "To maintain freshness and prevent spoilage, our packaging line utilizes cutting edge food preservation technology.",
           bullets: [
-            "Moisture Barriers: High-density multi-layered metallized BOPP/PET bags.",
-            "Nitrogen Flushing: Reduces oxygen to less than 1% to prevent oxidation.",
-            "Custom Sizing: Retail bags, sharing bags, and bulk commercial boxes.",
-            "Private Labeling: Custom branding and seasoning contract manufacturing."
+            "Moisture Barriers",
+            "Nitrogen Flushing",
+            "Custom Sizing",
+            "Private Labeling"
           ]
         },
         {
           title: "REGIONAL SOUTH INDIAN FLAVORS & SEASONINGS",
-          content: "At Dominion Ventures, our goal is to introduce Makhana in five South Indian states (Telangana, Andhra Pradesh, Tamil Nadu, Kerala & Karnataka) with regional seasoning profiles:",
+          content: "At Dominion Ventures our goal is to introduce Makhana in five South Indian states Telangana, Andhrapradesh, Tamil Nadu, Kerala & Karnataka with regional flavours & seasonings. Our flagship Savory, Creamy, Aromatic Flavours are as follows.",
           table: {
-            headers: ["Flavor Style", "Seasoning Profile"],
+            headers: ["Flavor Category", "Flavors & Seasonings"],
             rows: [
-              ["Classic & Savory", "Gunpowder (Podi) Curry Leaf & Mustard • Chettinad Spice • Malabar Black Pepper"],
-              ["Tangy & Creamy", "Puliyogare (Tamarind Rice mix) • Coconut Lime • Curd Rice style"],
-              ["Rich & Aromatic", "Sambar Masala • Rasam Powder • Bisi Bele Bath Spice"]
+              ["CLASSIC & SAVORY FLAVORS", "Gunpowder (Podi) Curry leaf & Mustard • Chettinad Spice • Malabar Black Pepper"],
+              ["TANGY & CREAMY FLAVORS", "Puliyogare (Tamarind Rice mix) • Coconut Lime • Curd Rice style"],
+              ["RICH AND AROMATIC FLAVORS", "Sambar Masala • Rasam powder • Bisi Bele Bhath Spice"]
             ]
           }
         },
         {
-          title: "EXPORT RANGE: INTERNATIONAL FLAVOURS & SEASONINGS",
-          content: "Leveraging globally popular fast-casual and gourmet seasoning profiles for North American and European snack markets:",
+          title: "INTERNATIONAL FLAVOURS & SEASONING FOR EXPORT RANGE",
+          content: "Leveraging popular gourmet and fast-casual profiles for international markets:",
           table: {
-            headers: ["Profile Group", "Flavor Variants"],
+            headers: ["Profile Group", "Target Demographic & Flavor Variants"],
             rows: [
-              ["Western Fast-Casual & BBQ", "Texas Style Smoky BBQ • Sour Cream & Wild Chive • Sweet Chili & Lime"],
-              ["European Herb & Cheese", "White Cheddar & Truffle • Mediterranean Sea Salt & Rosemary • French Sour Cream & Onion"],
-              ["Trending Global Fusion", "Sriracha Lime • Korean BBQ (Bulgogi) • White Chocolate & Matcha / Salted Caramel Infusion"]
+              ["Western Fast-Casual & BBQ Profiles", "These flavours leverage familiar, deeply entrenched Snacking flavours that American & European Consumers already love in potato chips & popcorn: Texas Style Smoky BBQ • Sour Cream & Wild Chive • Sweet Chili & Lime"],
+              ["European Herb & Cheese Profiles", "European consumers, particularly in Continental Europe and the UK, highly favor gourmet cheese variations and savory, garden fresh herbs: White Cheddar & Truffle • Mediterranean Sea Salt & Rosemary • French Sour Cream & Onion"],
+              ["Trending Global Fusion Profiles", "These Flavours target Millennial and GenZ demographics who actively seek out bold, cross cultural, and spicy flavour experiences: Sriracha Lime • Korean BBQ (Bulgogi) • White Chocolate & Matcha / Salted Caramel Infusion"]
             ]
           }
         },
         {
           title: "OUR ROASTING PHILOSOPHY",
-          content: "Note: We always roast the makhana in ghee / coconut oil / olive oil first and then add the spice blends immediately after roasting while the makhana is hot. Due to its natural spongy and porous texture, seasonings stick perfectly to the surface."
+          content: "note: We always roast the makhana in ghee / Coconut oil / olive oil first and then add the spice blends immediately after roasting while the makhana is hot and due to its natural spongy and porous texture seasonings sticks perfectly to the surface."
         }
       ]
     }

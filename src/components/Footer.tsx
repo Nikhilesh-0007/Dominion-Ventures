@@ -17,7 +17,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-brand-green-dark text-brand-cream pt-16 pb-10 relative overflow-hidden border-t-2 border-brand-gold/30">
+    <footer id="contact" className="bg-brand-green-dark text-brand-cream pt-16 pb-10 relative overflow-hidden border-t-2 border-brand-gold/30">
       {/* Editorial Watermark Logo */}
       <div className="absolute right-[-60px] bottom-[-40px] opacity-[0.03] select-none pointer-events-none hidden xl:block">
         <span className="font-serif text-[26vw] font-bold leading-none uppercase tracking-tighter">DV</span>
@@ -74,10 +74,9 @@ export default function Footer() {
               Navigation
             </span>
             <nav className="flex flex-col gap-3">
-              <Link href="/" className="font-sans text-sm text-brand-cream/70 hover:text-brand-gold hover:translate-x-1 transition-all duration-300">Home</Link>
-              <Link href="/about" className="font-sans text-sm text-brand-cream/70 hover:text-brand-gold hover:translate-x-1 transition-all duration-300">Our Story</Link>
-              <Link href="/products" className="font-sans text-sm text-brand-cream/70 hover:text-brand-gold hover:translate-x-1 transition-all duration-300">Products</Link>
-              <Link href="/processing" className="font-sans text-sm text-brand-cream/70 hover:text-brand-gold hover:translate-x-1 transition-all duration-300">Processing</Link>
+              <a href="#top" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="font-sans text-sm text-brand-cream/70 hover:text-brand-gold hover:translate-x-1 transition-all duration-300 cursor-pointer">Home</a>
+              <a href="#products" onClick={(e) => { e.preventDefault(); document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' }); }} className="font-sans text-sm text-brand-cream/70 hover:text-brand-gold hover:translate-x-1 transition-all duration-300 cursor-pointer">Products</a>
+              <a href="#contact" onClick={(e) => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }); }} className="font-sans text-sm text-brand-cream/70 hover:text-brand-gold hover:translate-x-1 transition-all duration-300 cursor-pointer">Contact Us</a>
             </nav>
           </div>
 

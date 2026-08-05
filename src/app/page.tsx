@@ -5,7 +5,8 @@ import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   ArrowRight, Sparkles, ShieldCheck, Leaf, Flame,
-  Zap, Award, Star, Quote, ChevronLeft, ChevronRight
+  Zap, Award, Star, Quote, ChevronLeft, ChevronRight,
+  Package, CheckCircle2, Sun, MapPin, Check
 } from 'lucide-react';
 import FadeIn from '@/components/FadeIn';
 import { products } from '@/data/products';
@@ -37,6 +38,63 @@ const corePillars = [
     badge: '100% Crisp'
   }
 ];
+// Makhana Processing Standards
+const processingSteps = [
+  { step: '01', title: 'Ethical Sourcing', desc: 'Direct farm integration securing fair trade wages and traceably pure crop yields.' },
+  { step: '02', title: 'Sun Drying', desc: 'Elevated natural drying to preserve starch density and kernel structure.' },
+  { step: '03', title: 'Grading & Sorting', desc: 'Sorting only the largest, premium-grade kernels (18mm to 20mm) for unmatched consistency.' },
+  { step: '04', title: 'Pre-Heating & Roasting', desc: 'Conditioning starches for slow wood-fired dry popping to achieve a light, grease-free crunch.' },
+  { step: '05', title: 'Manual popping', desc: 'Hand-crafted by traditional roasting masters using wooden mallets.' },
+  { step: '06', title: 'Polishing', desc: 'Clean tumbling to preserve crunch and remove shell fragments.' }
+];
+
+// Advanced Packaging Solutions
+const packagingSolutions = [
+  { title: 'Moisture Barriers', desc: 'High-density multi-layered protection preventing humidity degradation.' },
+  { title: 'Nitrogen Flushing', desc: 'Hermetically sealing packages with nitrogen to eliminate oxidation and preserve natural spices.' },
+  { title: 'Custom Sizing', desc: 'Customized retail bags, sharing packs, and commercial bulk boxes.' },
+  { title: 'Private Labeling', desc: 'Bespoke branding and seasoning contract manufacturing.' }
+];
+
+const southStates = ['Telangana', 'Andhra Pradesh', 'Tamil Nadu', 'Kerala', 'Karnataka'];
+
+const regionalFlavors = {
+  savory: [
+    'Gunpowder (Podi) Curry leaf & Mustard',
+    'Chettinad Spice',
+    'Malabar Black Pepper'
+  ],
+  creamy: [
+    'Puliyogare (Tamarind Rice mix)',
+    'Coconut Lime',
+    'Curd Rice style'
+  ],
+  aromatic: [
+    'Sambar Masala',
+    'Rasam powder',
+    'Bisi Bele Bhath Spice'
+  ]
+};
+
+const internationalExportProfiles = [
+  {
+    category: 'Western Fast-Casual & BBQ Profiles',
+    desc: 'These flavours leverage familiar, deeply entrenched Snacking flavours that American & European Consumers already love in potato chips & popcorn.',
+    flavors: ['Texas Style Smoky BBQ', 'Sour Cream & Wild Chive', 'Sweet Chili & Lime']
+  },
+  {
+    category: 'European Herb & Cheese Profiles',
+    desc: 'European consumers, particularly in Continental Europe and the UK, highly favor gourmet cheese variations and savory, garden fresh herbs.',
+    flavors: ['White Cheddar & Truffle', 'Mediterranean Sea Salt & Rosemary', 'French Sour Cream & Onion']
+  },
+  {
+    category: 'Trending Global Fusion Profiles',
+    desc: 'These Flavours target Millennial and GenZ demographics who actively seek out bold, cross cultural, and spicy flavour experiences.',
+    flavors: ['Sriracha Lime', 'Korean BBQ (Bulgogi)', 'White Chocolate & Matcha / Salted Caramel Infusion']
+  }
+];
+
+const roastingPhilosophyNote = "note: We always roast the makhana in ghee / Coconut oil / olive oil first and then add the spice blends immediately after roasting while the makhana is hot and due to its natural spongy and porous texture seasonings sticks perfectly to the surface.";
 
 // Stat list
 const statsList = [
@@ -61,31 +119,43 @@ const internationalFlavors = [
   { name: 'Sriracha Lime', tagline: 'Spicy Fusion', desc: 'Fermented red chili paste zested with freeze-dried key lime powder.', gradient: 'from-rose-600/25 via-red-500/10 to-transparent', icon: Zap }
 ];
 
-// Future Products Zig-Zag Data
+// Future Products 4-Grid Data
 const futureProducts = [
   {
+    id: 'ice-cream',
     title: 'Next-Gen Ice Cream',
     tagline: 'Model 1, 2 & 3 Servings',
     desc: 'Anatomically sculpted fruit gelato shells encasing fresh berry sorbets, ultra-viscous shake layers separating rich pistachio creams, and interactive painter\'s palette plating concepts.',
     image: '/next_gen_ice (2).png',
     gradient: 'from-pink-500/10 via-purple-500/5 to-transparent',
-    features: ['Sculpted Fruit Shells', 'Viscous Pistachio Creams', 'Artist Palette Trays']
+    features: ['Sculpted Fruit Shells', 'Viscous Creams', 'Artist Palette']
   },
   {
+    id: 'soda',
     title: 'Functional Soda',
-    tagline: 'Prebiotic & Probiotic sparkling soda',
+    tagline: 'Prebiotic & Probiotic Soda',
     desc: 'Guilt-free alternative to traditional HFCS soft drinks. Formulated with gut-microbiome prebiotic fibers, probiotic proteins, and organic botanical caffeine from tea sources.',
     image: '/Functional Soda.png',
     gradient: 'from-blue-500/10 via-cyan-500/5 to-transparent',
-    features: ['Digestive Prebiotics', 'Probiotic Proteins', 'Zero HFCS / Low Glycemic']
+    features: ['Digestive Prebiotics', 'Probiotic Proteins', 'Real Fruit Flavors']
   },
   {
+    id: 'water',
     title: 'Enhanced Longevity Water',
     tagline: 'Bioactive Synergy Hydration',
     desc: 'Advanced water-soluble delivery mechanism infused with scientifically validated synergistic pairings (Vitamin D3 + Magnesium + K2) to optimize cellular repair and systemic health span.',
     image: '/water (2).png',
     gradient: 'from-indigo-500/10 via-blue-500/5 to-transparent',
-    features: ['D3 + Magnesium + K2 Synergy', 'Fast Water-Soluble Absorption', 'Ionic Trace Minerals']
+    features: ['D3 + Magnesium + K2 Synergy', 'Fast Water Absorption', 'Ionic Trace Minerals']
+  },
+  {
+    id: 'jackfruit-chips',
+    title: 'Jackfruit Chips',
+    tagline: 'Vacuum-Cooked Sustainable Snack',
+    desc: 'Crispy vacuum-cooked jackfruit slices that minimize agricultural post-harvest waste and provide a healthier, low-fat alternative to traditional potato chips across 190 nations.',
+    image: '/jack_chips (2).png',
+    gradient: 'from-orange-500/10 via-amber-500/5 to-transparent',
+    features: ['Vacuum Cooked', 'GI Tag Sourced', 'Zero Waste']
   }
 ];
 
@@ -112,7 +182,6 @@ const testimonials = [
 ];
 
 export default function Home() {
-  const [activeFlavourTab, setActiveFlavourTab] = useState<'traditional' | 'international'>('traditional');
   const [activeTestimonialIdx, setActiveTestimonialIdx] = useState(0);
   const [isReportModalOpen, setIsReportModalOpen] = useState(false);
 
@@ -127,7 +196,7 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col w-full bg-white relative">
+    <div id="top" className="flex flex-col w-full bg-white relative">
       {/* HERO SECTION */}
       <section className="relative min-h-[90vh] lg:h-[95vh] flex items-center overflow-hidden px-6 py-16 lg:py-20 bg-brand-cream">
         {/* Full-bleed Background Image with subtle parallax */}
@@ -150,30 +219,14 @@ export default function Home() {
               </span>
             </div>
 
-            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-serif text-brand-green leading-[1.05] tracking-tight">
-              Healthy Snacking,<br />
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif text-brand-green leading-[1.08] tracking-tight">
+              <span className="inline-block whitespace-nowrap">Modern Nourishment,</span><br />
               <span className="italic text-brand-gold">Reimagined.</span>
             </h1>
 
-            <p className="font-sans text-base md:text-lg text-brand-charcoal/80 max-w-lg leading-relaxed mt-1">
-              Traditional Indian superfoods crafted into premium healthy snacks for today&apos;s lifestyle. Sourced directly from farms, dry-roasted, and infused with gourmet spice recipes.
+            <p className="font-sans text-sm sm:text-base md:text-lg text-brand-charcoal/90 max-w-xl leading-relaxed tracking-normal mt-1">
+              Our new range of organic, traditional snacks and functional beverages blends time-honoured culinary heritage with modern wellness science to nourish your body and soul. Every bite and sip delivers authentic, wholesome flavours crafted from pure, sustainably sourced ingredients designed to fuel your active daily lifestyle.
             </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 mt-2">
-              <Link
-                href="/products"
-                className="btn-primary"
-              >
-                <span>Explore Products</span>
-                <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-300 relative z-10" />
-              </Link>
-              <Link
-                href="/about"
-                className="btn-secondary"
-              >
-                Our Story
-              </Link>
-            </div>
           </div>
 
           {/* Hero Right Visual: Left empty to show background image on the right */}
@@ -211,7 +264,7 @@ export default function Home() {
           </div>
 
           <div className="flex flex-col gap-6 w-full text-brand-charcoal/90">
-            <p 
+            <p
               className="font-sans text-sm md:text-base leading-relaxed text-justify"
               style={{ textAlign: 'justify', textJustify: 'inter-word' }}
             >
@@ -227,7 +280,7 @@ export default function Home() {
               </p>
             </div>
 
-            <p 
+            <p
               className="font-sans text-sm md:text-base leading-relaxed text-justify"
               style={{ textAlign: 'justify', textJustify: 'inter-word' }}
             >
@@ -238,7 +291,7 @@ export default function Home() {
             </p>
 
             <div className="w-full border-t border-brand-cream-dark/80 my-8" />
-            
+
             <div className="text-center flex flex-col gap-3">
               <p className="font-serif italic text-xl md:text-2xl text-brand-green tracking-wide">
                 Welcome to honest, effortless nutrition.
@@ -251,43 +304,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CORE PILLARS SECTION */}
-      <section className="py-16 lg:py-20 bg-white px-6 border-b border-brand-cream-dark relative">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {corePillars.map((pillar, idx) => (
-              <FadeIn key={idx} delay={idx * 0.1}>
-                <div className="relative bg-white/70 backdrop-blur-md rounded-3xl p-8 border border-brand-cream-dark shadow-premium-sm hover:shadow-premium-lg hover:border-brand-gold/45 hover:-translate-y-2 transition-all duration-500 group h-full flex flex-col justify-between">
-                  <div className="absolute top-0 left-8 right-8 h-[2px] bg-gradient-to-r from-transparent via-brand-gold/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                  <div>
-                    <div className="flex justify-between items-center mb-6">
-                      <div className="w-12 h-12 rounded-2xl bg-brand-green/5 text-brand-green flex items-center justify-center group-hover:bg-brand-green group-hover:text-brand-cream group-hover:rotate-[360deg] transition-all duration-700 shadow-inner">
-                        <pillar.icon size={20} />
-                      </div>
-                      <span className="text-[9px] font-sans text-brand-gold uppercase tracking-widest font-bold">
-                        {pillar.badge}
-                      </span>
-                    </div>
-
-                    <h3 className="font-serif text-2xl text-brand-green mb-3 group-hover:text-brand-gold transition-colors duration-300">
-                      {pillar.title}
-                    </h3>
-                    <p className="font-sans text-xs text-brand-charcoal/70 leading-relaxed">
-                      {pillar.desc}
-                    </p>
-                  </div>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
-        </div>
-      </section>
-
-
-
       {/* PRODUCT PORTFOLIO SECTION */}
-      <section className="py-16 lg:py-20 bg-white px-6 border-b border-brand-cream-dark relative">
+      <section id="products" className="py-16 lg:py-20 bg-white px-6 border-b border-brand-cream-dark relative">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
           <div className="text-center max-w-3xl mx-auto mb-10">
@@ -329,7 +347,7 @@ export default function Home() {
                       Signature Superfood
                     </p>
                     <p className="font-sans text-sm text-brand-cream/80 leading-relaxed">
-                      Sourced directly from the clean, pesticide-free wetland ecosystems of Bihar, our premium Phool Makhana is hand-harvested by local farming collectives using heritage agricultural methods. We sort and grade each harvest to select only the largest, 18-20mm jumbo kernels. Popped by traditional roasting masters using slow wood-fired dry popping, our seeds preserve a light, grease-free crunch. Each batch is then dry-tumbled and infused with cold-pressed oils and natural gourmet spice recipes—creating an unmatched sensory experience that honors heritage while optimizing daily longevity and systemic health.
+                      Makhana has evolved from a traditional Indian superfood into a global health phenomenon. At DOMINION VENTURES, we bridge the gap between ancient agricultural wisdom and modern food safety standards. Our meticulous farm-to-pack process ensures every Makhana seed retains its natural nutrients, pristine white color, and signature crunch.
                     </p>
 
                     <div className="flex flex-wrap gap-2.5 mt-2">
@@ -338,16 +356,6 @@ export default function Home() {
                           {feat}
                         </span>
                       ))}
-                    </div>
-
-                    <div className="mt-6 w-fit">
-                      <button
-                        onClick={() => setIsReportModalOpen(true)}
-                        className="btn-gold !px-6 !py-3 shadow-premium-gold"
-                      >
-                        <span>View Sourcing & Quality Report</span>
-                        <ArrowRight size={13} className="group-hover:translate-x-0.5 transition-transform duration-300 relative z-10" />
-                      </button>
                     </div>
                   </div>
 
@@ -367,103 +375,257 @@ export default function Home() {
             </FadeIn>
           </div>
 
-          {/* Button to Products Page */}
-          <div className="flex justify-center mt-12">
-            <FadeIn delay={0.3}>
-              <Link
-                href="/products"
-                className="btn-primary"
-              >
-                <span>View Products Collection</span>
-                <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-300 relative z-10" />
-              </Link>
-            </FadeIn>
+          {/* OUR PROCESSING STANDARDS */}
+          <div className="mt-16 pt-16 border-t border-brand-cream-dark">
+            <div className="text-center max-w-3xl mx-auto mb-12">
+              <FadeIn>
+                <span className="font-sans text-xs uppercase tracking-[0.25em] font-extrabold text-brand-gold">
+                  Quality Control Process
+                </span>
+                <h3 className="text-4xl md:text-5xl font-serif text-brand-green mt-3 mb-4 leading-tight">
+                  OUR PROCESSING STANDARDS
+                </h3>
+                <p className="font-sans text-sm text-brand-charcoal/80 leading-relaxed">
+                  We transform raw gorgon nut seeds into premium, ready-to-eat makhana through a strict, multi-stage quality control process.
+                </p>
+                <div className="h-[2px] w-16 bg-brand-gold mx-auto mt-6" />
+              </FadeIn>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {processingSteps.map((step, idx) => (
+                <FadeIn key={idx} delay={idx * 0.08}>
+                  <div className="bg-brand-cream/40 rounded-3xl p-7 border border-brand-cream-dark hover:border-brand-gold/40 hover:shadow-lg transition-all duration-300 h-full flex flex-col justify-between group">
+                    <div>
+                      <div className="flex justify-between items-center mb-4">
+                        <span className="font-serif text-3xl font-bold text-brand-gold/60 group-hover:text-brand-gold transition-colors">
+                          {step.step}
+                        </span>
+                        <div className="w-8 h-8 rounded-full bg-brand-green/5 text-brand-green flex items-center justify-center group-hover:bg-brand-green group-hover:text-brand-cream transition-colors">
+                          <CheckCircle2 size={16} />
+                        </div>
+                      </div>
+                      <h4 className="font-serif text-xl text-brand-green font-medium mb-2 group-hover:text-brand-gold transition-colors">
+                        {step.title}
+                      </h4>
+                      {step.desc && (
+                        <p className="font-sans text-xs text-brand-charcoal/75 leading-relaxed">
+                          {step.desc}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                </FadeIn>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
 
-      {/* FLAVOUR SHOWCASE SECTION */}
-      <section className="py-16 lg:py-20 bg-brand-cream/15 px-6 border-b border-brand-cream-dark relative">
-        <div className="max-w-7xl mx-auto">
-          {/* Header */}
-          <div className="text-center max-w-3xl mx-auto mb-10">
+          {/* ADVANCED PACKAGING SOLUTIONS */}
+          <div className="mt-16 pt-16 border-t border-brand-cream-dark">
+            <div className="text-center max-w-3xl mx-auto mb-12">
+              <FadeIn>
+                <span className="font-sans text-xs uppercase tracking-[0.25em] font-extrabold text-brand-gold">
+                  Preservation Technology
+                </span>
+                <h3 className="text-4xl md:text-5xl font-serif text-brand-green mt-3 mb-4 leading-tight">
+                  ADVANCED PACKAGING SOLUTIONS
+                </h3>
+                <p className="font-sans text-sm text-brand-charcoal/80 leading-relaxed">
+                  To maintain freshness and prevent spoilage, our packaging line utilizes cutting edge food preservation technology.
+                </p>
+                <div className="h-[2px] w-16 bg-brand-gold mx-auto mt-6" />
+              </FadeIn>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {packagingSolutions.map((pack, idx) => (
+                <FadeIn key={idx} delay={idx * 0.1}>
+                  <div className="bg-brand-green text-brand-cream rounded-3xl p-7 border border-brand-gold/20 shadow-md hover:border-brand-gold/50 hover:shadow-xl transition-all duration-300 h-full flex flex-col justify-between group">
+                    <div>
+                      <div className="w-10 h-10 rounded-2xl bg-white/10 text-brand-gold flex items-center justify-center mb-5 group-hover:bg-brand-gold group-hover:text-brand-green transition-colors">
+                        <Package size={18} />
+                      </div>
+                      <h4 className="font-serif text-xl text-brand-gold font-medium mb-2">
+                        {pack.title}
+                      </h4>
+                      {pack.desc && (
+                        <p className="font-sans text-xs text-brand-cream/80 leading-relaxed">
+                          {pack.desc}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                </FadeIn>
+              ))}
+            </div>
+          </div>
+
+          {/* REGIONAL SOUTH INDIAN FLAVORS & SEASONINGS */}
+          <div className="mt-16 pt-16 border-t border-brand-cream-dark">
+            <div className="text-center max-w-3xl mx-auto mb-10">
+              <FadeIn>
+                <span className="font-sans text-xs uppercase tracking-[0.25em] font-extrabold text-brand-gold">
+                  Regional Flavor Launch
+                </span>
+                <h3 className="text-4xl md:text-5xl font-serif text-brand-green mt-3 mb-4 leading-tight">
+                  REGIONAL SOUTH INDIAN FLAVORS & SEASONINGS
+                </h3>
+                <p className="font-sans text-sm text-brand-charcoal/80 leading-relaxed max-w-2xl mx-auto">
+                  At Dominion Ventures our goal is to introduce Makhana in five South Indian states Telangana, Andhrapradesh, Tamil Nadu, Kerala & Karnataka with regional flavours & seasonings. Our flagship Savory, Creamy, Aromatic Flavours are as follows.
+                </p>
+
+                {/* State Badges */}
+                <div className="flex flex-wrap justify-center gap-3 mt-6 mb-8">
+                  {southStates.map((state, sidx) => (
+                    <span key={sidx} className="inline-flex items-center gap-1.5 bg-brand-cream border border-brand-gold/40 text-brand-green text-xs font-sans font-bold uppercase tracking-wider px-4 py-2 rounded-full shadow-premium-sm">
+                      <MapPin size={12} className="text-brand-gold" />
+                      {state}
+                    </span>
+                  ))}
+                </div>
+              </FadeIn>
+            </div>
+
+            {/* Flavor Categories Grid (3 Columns) */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {/* Classic & Savory */}
+              <FadeIn delay={0.1}>
+                <div className="bg-white rounded-3xl p-7 border border-brand-cream-dark shadow-sm hover:shadow-md transition-shadow h-full">
+                  <div className="flex items-center gap-3 mb-5 pb-4 border-b border-brand-cream-dark">
+                    <div className="w-10 h-10 rounded-2xl bg-amber-500/10 text-amber-700 flex items-center justify-center font-bold">
+                      <Flame size={20} />
+                    </div>
+                    <div>
+                      <span className="text-[9px] font-sans text-brand-gold uppercase tracking-widest font-extrabold block">Category 01</span>
+                      <h4 className="font-serif text-xl text-brand-green font-medium">CLASSIC & SAVORY FLAVORS</h4>
+                    </div>
+                  </div>
+                  <div className="flex flex-col gap-3">
+                    {regionalFlavors.savory.map((item, fidx) => (
+                      <div key={fidx} className="flex gap-3 items-center p-3.5 rounded-2xl bg-brand-cream/30 border border-brand-cream-dark/60">
+                        <div className="w-5 h-5 rounded-full bg-brand-gold/20 text-brand-green flex items-center justify-center text-xs font-bold shrink-0">
+                          ✓
+                        </div>
+                        <span className="font-sans text-xs font-semibold text-brand-green">{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </FadeIn>
+
+              {/* Tangy & Creamy */}
+              <FadeIn delay={0.2}>
+                <div className="bg-white rounded-3xl p-7 border border-brand-cream-dark shadow-sm hover:shadow-md transition-shadow h-full">
+                  <div className="flex items-center gap-3 mb-5 pb-4 border-b border-brand-cream-dark">
+                    <div className="w-10 h-10 rounded-2xl bg-emerald-500/10 text-emerald-700 flex items-center justify-center font-bold">
+                      <Sparkles size={20} />
+                    </div>
+                    <div>
+                      <span className="text-[9px] font-sans text-brand-gold uppercase tracking-widest font-extrabold block">Category 02</span>
+                      <h4 className="font-serif text-xl text-brand-green font-medium">TANGY & CREAMY FLAVORS</h4>
+                    </div>
+                  </div>
+                  <div className="flex flex-col gap-3">
+                    {regionalFlavors.creamy.map((item, fidx) => (
+                      <div key={fidx} className="flex gap-3 items-center p-3.5 rounded-2xl bg-brand-cream/30 border border-brand-cream-dark/60">
+                        <div className="w-5 h-5 rounded-full bg-brand-gold/20 text-brand-green flex items-center justify-center text-xs font-bold shrink-0">
+                          ✓
+                        </div>
+                        <span className="font-sans text-xs font-semibold text-brand-green">{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </FadeIn>
+
+              {/* Rich & Aromatic */}
+              <FadeIn delay={0.3}>
+                <div className="bg-white rounded-3xl p-7 border border-brand-cream-dark shadow-sm hover:shadow-md transition-shadow h-full">
+                  <div className="flex items-center gap-3 mb-5 pb-4 border-b border-brand-cream-dark">
+                    <div className="w-10 h-10 rounded-2xl bg-purple-500/10 text-purple-700 flex items-center justify-center font-bold">
+                      <Zap size={20} />
+                    </div>
+                    <div>
+                      <span className="text-[9px] font-sans text-brand-gold uppercase tracking-widest font-extrabold block">Category 03</span>
+                      <h4 className="font-serif text-xl text-brand-green font-medium">RICH AND AROMATIC FLAVORS</h4>
+                    </div>
+                  </div>
+                  <div className="flex flex-col gap-3">
+                    {regionalFlavors.aromatic.map((item, fidx) => (
+                      <div key={fidx} className="flex gap-3 items-center p-3.5 rounded-2xl bg-brand-cream/30 border border-brand-cream-dark/60">
+                        <div className="w-5 h-5 rounded-full bg-brand-gold/20 text-brand-green flex items-center justify-center text-xs font-bold shrink-0">
+                          ✓
+                        </div>
+                        <span className="font-sans text-xs font-semibold text-brand-green">{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </FadeIn>
+            </div>
+          </div>
+
+          {/* INTERNATIONAL FLAVOURS & SEASONING FOR EXPORT RANGE */}
+          <div className="mt-16 pt-16 border-t border-brand-cream-dark">
+            <div className="text-center max-w-3xl mx-auto mb-12">
+              <FadeIn>
+                <span className="font-sans text-xs uppercase tracking-[0.25em] font-extrabold text-brand-gold">
+                  Global Export Range
+                </span>
+                <h3 className="text-4xl md:text-5xl font-serif text-brand-green mt-3 mb-4 leading-tight">
+                  INTERNATIONAL FLAVOURS & SEASONING FOR EXPORT RANGE
+                </h3>
+                <div className="h-[2px] w-16 bg-brand-gold mx-auto mt-6" />
+              </FadeIn>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {internationalExportProfiles.map((prof, pidx) => (
+                <FadeIn key={pidx} delay={pidx * 0.1}>
+                  <div className="bg-brand-green-dark text-brand-cream rounded-3xl p-8 border border-brand-gold/30 shadow-lg hover:shadow-2xl transition-all duration-300 h-full flex flex-col justify-between">
+                    <div>
+                      <span className="text-[10px] font-sans text-brand-gold uppercase tracking-widest font-extrabold block mb-2">
+                        Export Profile 0{pidx + 1}
+                      </span>
+                      <h4 className="font-serif text-2xl text-brand-gold font-medium mb-3">
+                        {prof.category}
+                      </h4>
+                      <p className="font-sans text-xs text-brand-cream/80 leading-relaxed mb-6">
+                        {prof.desc}
+                      </p>
+                      <div className="flex flex-col gap-2.5">
+                        {prof.flavors.map((item, fidx) => (
+                          <div key={fidx} className="flex gap-2.5 items-center bg-white/5 border border-brand-gold/20 rounded-xl px-3.5 py-2.5">
+                            <Star size={12} className="text-brand-gold shrink-0 fill-current" />
+                            <span className="font-sans text-xs font-semibold text-brand-cream">{item}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </FadeIn>
+              ))}
+            </div>
+          </div>
+
+          {/* OUR ROASTING PHILOSOPHY NOTE */}
+          <div className="mt-16 pt-12">
             <FadeIn>
-              <span className="font-sans text-xs uppercase tracking-[0.25em] font-extrabold text-brand-gold">
-                Sensory Experience
-              </span>
-              <h2 className="text-5xl md:text-6xl font-serif text-brand-green mt-4 mb-6 leading-tight">
-                Gourmet Flavor Collections
-              </h2>
-              <div className="h-[2px] w-20 bg-brand-gold mx-auto mb-8" />
-
-              {/* Category Selector Tabs */}
-              <div className="flex gap-2 bg-brand-cream p-1.5 rounded-full border border-brand-cream-dark w-fit mx-auto shadow-premium-sm">
-                <button
-                  onClick={() => setActiveFlavourTab('traditional')}
-                  className={`px-8 py-3 rounded-full text-xs uppercase tracking-widest transition-all duration-300 ${activeFlavourTab === 'traditional'
-                    ? 'btn-tab-active'
-                    : 'btn-tab-inactive'
-                    }`}
-                >
-                  Traditional Collection
-                </button>
-                <button
-                  onClick={() => setActiveFlavourTab('international')}
-                  className={`px-8 py-3 rounded-full text-xs uppercase tracking-widest transition-all duration-300 ${activeFlavourTab === 'international'
-                    ? 'btn-tab-active'
-                    : 'btn-tab-inactive'
-                    }`}
-                >
-                  International Collection
-                </button>
+              <div className="bg-brand-cream p-8 md:p-10 rounded-[2.5rem] border border-brand-gold/40 shadow-inner text-left max-w-4xl mx-auto">
+                <span className="font-sans text-xs uppercase tracking-[0.25em] font-extrabold text-brand-gold block mb-2">
+                  Culinary Philosophy
+                </span>
+                <p className="font-sans text-sm md:text-base text-brand-charcoal/90 leading-relaxed italic">
+                  {roastingPhilosophyNote}
+                </p>
               </div>
             </FadeIn>
           </div>
-
-          {/* Flavors Grid with Animations */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
-            <AnimatePresence mode="wait">
-              {(activeFlavourTab === 'traditional' ? traditionalFlavors : internationalFlavors).map((flav, idx) => (
-                <motion.div
-                  key={flav.name}
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -15 }}
-                  transition={{ duration: 0.4, delay: idx * 0.08 }}
-                  className={`relative p-8 rounded-3xl bg-white border border-brand-cream-dark shadow-premium-sm hover:shadow-premium-lg hover:border-brand-gold/45 hover:-translate-y-2 transition-all duration-500 overflow-hidden group flex flex-col justify-between h-full`}
-                >
-                  {/* Custom Gradient Background Glow */}
-                  <div className={`absolute inset-0 bg-gradient-to-tr ${flav.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none`} />
-
-                  <div className="relative z-10 text-left">
-                    <div className="flex justify-between items-center mb-6">
-                      <div className="w-10 h-10 rounded-2xl bg-brand-green/5 text-brand-green flex items-center justify-center group-hover:bg-brand-green group-hover:text-brand-cream transition-colors duration-300">
-                        <flav.icon size={16} />
-                      </div>
-                      <span className="text-[9px] font-sans text-brand-gold uppercase tracking-wider font-extrabold">
-                        Profile
-                      </span>
-                    </div>
-
-                    <h3 className="font-serif text-2xl text-brand-green mb-1 group-hover:text-brand-gold transition-colors duration-300 font-medium">
-                      {flav.name}
-                    </h3>
-                    <p className="font-sans text-[10px] uppercase tracking-wider text-brand-charcoal/50 mb-4 font-bold">
-                      {flav.tagline}
-                    </p>
-                    <p className="font-sans text-xs text-brand-charcoal/70 leading-relaxed">
-                      {flav.desc}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
-            </AnimatePresence>
-          </div>
         </div>
       </section>
 
-      {/* FUTURE PRODUCTS (ZIG-ZAG SHOWCASE) */}
-      <section className="py-16 lg:py-20 bg-white px-6 border-b border-brand-cream-dark relative">
+      {/* FUTURE PRODUCTS (4-GRID SHOWCASE) */}
+      <section id="future-products" className="py-16 lg:py-20 bg-white px-6 border-b border-brand-cream-dark relative">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
           <div className="text-center max-w-3xl mx-auto mb-12">
@@ -478,192 +640,68 @@ export default function Home() {
             </FadeIn>
           </div>
 
-          {/* Alternating Zig-Zag Layout */}
-          <div className="flex flex-col gap-14 max-w-6xl mx-auto">
-            {futureProducts.map((prod, idx) => {
-              const isEven = idx % 2 === 0;
-              return (
-                <div
-                  key={prod.title}
-                  className={`grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center ${isEven ? '' : 'lg:flex-row-reverse'
-                    }`}
-                >
-                  {/* Visual Illustration Column */}
-                  <div className={`lg:col-span-5 ${isEven ? 'lg:order-1' : 'lg:order-2'}`}>
-                    <FadeIn direction={isEven ? 'left' : 'right'}>
-                      <div className={`relative aspect-square w-full max-w-[340px] mx-auto rounded-[2rem] overflow-hidden border border-brand-cream-dark p-6 shadow-premium-md hover:shadow-premium-lg transition-shadow duration-500 bg-gradient-to-tr ${prod.gradient} group`}>
-                        <img
-                          src={prod.image}
-                          alt={prod.title}
-                          className="w-full h-full object-contain animate-float-slow group-hover:scale-105 transition-transform duration-700"
-                        />
-                      </div>
-                    </FadeIn>
-                  </div>
+          {/* Horizontal 4-Column Grid Layout */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {futureProducts.map((prod, idx) => (
+              <FadeIn key={prod.id} delay={idx * 0.1}>
+                <div className="bg-brand-cream/30 rounded-3xl p-6 border border-brand-cream-dark shadow-sm hover:shadow-premium-lg hover:border-brand-gold/45 transition-all duration-500 flex flex-col justify-between h-full group">
+                  <div>
+                    {/* Visual Card Image */}
+                    <div className={`relative aspect-square w-full rounded-2xl overflow-hidden border border-brand-cream-dark/60 p-4 mb-6 bg-gradient-to-tr ${prod.gradient} flex items-center justify-center`}>
+                      <img
+                        src={prod.image}
+                        alt={prod.title}
+                        className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
+                      />
+                    </div>
 
-                  {/* Text details Column */}
-                  <div className={`lg:col-span-7 ${isEven ? 'lg:order-2' : 'lg:order-1'} flex flex-col gap-6 text-left`}>
-                    <FadeIn delay={0.1}>
-                      <div className="flex gap-2 items-center">
-                        <span className="inline-block bg-brand-gold/15 text-brand-gold border border-brand-gold/20 text-[9px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">
-                          {prod.tagline}
+                    <span className="inline-block bg-brand-gold/15 text-brand-gold border border-brand-gold/20 text-[9px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full mb-3">
+                      {prod.tagline}
+                    </span>
+
+                    <h3 className="font-serif text-2xl text-brand-green font-medium mb-3 group-hover:text-brand-gold transition-colors">
+                      {prod.title}
+                    </h3>
+
+                    <p className="font-sans text-xs text-brand-charcoal/75 leading-relaxed mb-4 line-clamp-3">
+                      {prod.desc}
+                    </p>
+
+                    <div className="flex flex-wrap gap-1.5 mb-6">
+                      {prod.features.map((feat, fidx) => (
+                        <span key={fidx} className="text-[9px] font-sans font-medium text-brand-green border border-brand-green/20 rounded-full px-2.5 py-0.5 bg-brand-cream">
+                          {feat}
                         </span>
-                      </div>
-                      <h3 className="font-serif text-3xl md:text-4xl text-brand-green font-medium mt-2">
-                        {prod.title}
-                      </h3>
-                      <p className="font-sans text-sm text-brand-charcoal/70 leading-relaxed">
-                        {prod.desc}
-                      </p>
-
-                      <div className="flex flex-wrap gap-2.5 mt-2">
-                        {prod.features.map((feat, fidx) => (
-                          <span key={fidx} className="text-[10px] font-sans text-brand-green border border-brand-green/20 rounded-full px-3 py-1 bg-brand-cream/50">
-                            {feat}
-                          </span>
-                        ))}
-                      </div>
-
-                      <div className="mt-4">
-                        <Link
-                          href="/products"
-                          className="btn-primary !px-6 !py-3.5"
-                        >
-                          <span>Learn More</span>
-                          <ArrowRight size={12} className="group-hover:translate-x-0.5 transition-transform duration-300 relative z-10" />
-                        </Link>
-                      </div>
-                    </FadeIn>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
 
-      {/* EDITORIAL ABOUT SECTION */}
-      <section className="py-16 lg:py-20 bg-brand-cream/30 px-6 border-b border-brand-cream-dark relative overflow-hidden">
-        {/* Floating Decorative Leaf Pattern background */}
-        <div className="absolute top-10 left-10 opacity-[0.03] rotate-12 scale-125 select-none pointer-events-none hidden xl:block">
-          <Leaf size={350} className="text-brand-green" />
-        </div>
-
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-            {/* Overlapping Images on the Left */}
-            <div className="lg:col-span-5 relative flex items-center justify-center">
-              <FadeIn direction="left">
-                <div className="relative w-full max-w-[380px] aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-premium-lg border border-brand-cream-dark/60 group bg-brand-cream z-10">
-                  <img
-                    src="/about section img.png"
-                    alt="Dominion Sourcing"
-                    className="w-full h-full object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-brand-green/5 mix-blend-multiply pointer-events-none" />
-                </div>
-                {/* Floating Decorative Statistics Badge */}
-                <motion.div
-                  animate={{ y: [0, -10, 0] }}
-                  transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
-                  className="absolute -bottom-8 -right-4 bg-brand-green-dark border border-brand-gold/30 rounded-3xl p-6 shadow-premium-gold text-brand-cream hidden sm:block z-20 w-48 text-center"
-                >
-                  <span className="block font-serif text-3xl text-brand-gold font-bold">100%</span>
-                  <span className="block font-sans text-[10px] uppercase tracking-widest text-brand-cream/80 mt-1 font-bold">Traceable Source</span>
-                </motion.div>
-              </FadeIn>
-            </div>
-
-            {/* Content & Dashboard on the Right */}
-            <div className="lg:col-span-7 flex flex-col gap-8 text-left relative z-10">
-              <FadeIn>
-                <span className="font-sans text-xs uppercase tracking-[0.25em] font-extrabold text-brand-gold">
-                  Our Corporate Mission
-                </span>
-                <h2 className="text-5xl md:text-6xl font-serif text-brand-green mt-4 leading-[1.1] tracking-tight">
-                  Transforming Traditional Nutrition into Modern Healthy Living
-                </h2>
-              </FadeIn>
-
-              <FadeIn delay={0.2}>
-                <div className="flex flex-col gap-4 text-brand-charcoal/80 font-sans text-base leading-relaxed">
-                  <p>
-                    At Dominion Ventures, we are passionate about redefining the future of healthy snacking. By combining traditional ingredients with modern food innovation, premium processing, and advanced packaging, we create products that deliver exceptional taste, nutrition, and quality.
-                  </p>
-                  <p>
-                    From our flagship Premium Makhana to our upcoming range of functional beverages, innovative desserts, enhanced hydration, and healthy snacks, every product reflects our commitment to natural ingredients, premium craftsmanship, and global-quality standards.
-                  </p>
-                </div>
-              </FadeIn>
-
-              {/* Statistics Grid */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-8 border-t border-brand-cream-dark">
-                {statsList.map((stat, idx) => (
-                  <div key={idx} className="flex flex-col">
-                    <span className="font-serif text-3xl md:text-4xl text-brand-green font-semibold">
-                      {stat.value}
-                    </span>
-                    <span className="font-sans text-[10px] uppercase tracking-wider text-brand-charcoal/50 mt-1.5 font-bold">
-                      {stat.label}
-                    </span>
-                  </div>
-                ))}
-              </div>
-
-              <FadeIn delay={0.4}>
-                <div className="mt-4">
+                  {/* Read More Button */}
                   <Link
-                    href="/about"
-                    className="btn-primary"
+                    href={`/products/${prod.id}`}
+                    className="btn-gold !w-full !justify-center !py-2.5 text-xs shadow-premium-gold"
                   >
-                    <span>Read Our Story</span>
-                    <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-300 relative z-10" />
+                    <span>Read More</span>
+                    <ArrowRight size={12} className="group-hover:translate-x-0.5 transition-transform duration-300 relative z-10" />
                   </Link>
                 </div>
               </FadeIn>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* SOURCING & PROCESSING CTA SECTION */}
-      <section className="py-16 lg:py-20 bg-brand-cream/35 px-6 border-b border-brand-cream-dark relative overflow-hidden">
-        {/* Decorative subtle background design elements */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,_var(--tw-gradient-stops))] from-brand-gold/10 via-transparent to-transparent opacity-60" />
 
-        <div className="max-w-4xl mx-auto text-center relative z-10">
-          <FadeIn>
-            <span className="font-sans text-xs uppercase tracking-[0.25em] font-extrabold text-brand-gold">
-              Traceability & Sourcing Excellence
-            </span>
-            <h2 className="text-4xl md:text-5xl font-serif text-brand-green mt-4 mb-6 leading-tight">
-              Experience the Journey of Sourcing & Innovation
-            </h2>
-            <p className="font-sans text-base text-brand-charcoal/80 max-w-2xl mx-auto mb-10 leading-relaxed">
-              Discover how we combine traditional Indian farming with modern food science and premium processing. Explore our 8-step business ecosystem and product development pipeline from wetland harvesting to nitrogen-sealed packaging.
-            </p>
-            <div className="flex justify-center">
-              <Link
-                href="/processing"
-                className="btn-primary"
-              >
-                <span>Explore Sourcing & Processing Timeline</span>
-                <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-300 relative z-10" />
-              </Link>
-            </div>
-          </FadeIn>
-        </div>
-      </section>
 
       {/* MAKHANA REPORT MODAL */}
       {isReportModalOpen && makhanaProduct && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 animate-fade-in">
           {/* Backdrop */}
-          <div 
+          <div
             className="absolute inset-0 bg-black/60 backdrop-blur-md transition-opacity duration-300"
             onClick={() => setIsReportModalOpen(false)}
           />
-          
+
           {/* Modal Container */}
           <div className="bg-[#FAF9F6] border border-brand-gold/30 rounded-[2rem] w-full max-w-2xl overflow-hidden shadow-2xl relative z-10 flex flex-col max-h-[85vh]">
             {/* Header */}
@@ -677,30 +715,30 @@ export default function Home() {
                   {makhanaProduct.name} Sourcing Report
                 </h3>
               </div>
-              <button 
+              <button
                 onClick={() => setIsReportModalOpen(false)}
                 className="relative z-10 text-brand-cream/80 hover:text-brand-gold font-sans text-xs tracking-wider uppercase border border-brand-cream/20 rounded-full px-3 py-1 bg-white/5 transition-colors"
               >
                 Close
               </button>
             </div>
-            
+
             {/* Scrollable Content */}
             <div className="p-6 md:p-8 overflow-y-auto flex flex-col gap-6 text-left font-sans text-brand-charcoal/90 text-sm leading-relaxed">
               {/* Overview */}
               <p className="font-sans text-xs text-brand-charcoal/70 leading-relaxed bg-brand-cream p-6 rounded-[1.8rem] border border-brand-cream-dark whitespace-pre-line shadow-inner">
                 {makhanaProduct.detailedReport.overview}
               </p>
-              
+
               <div className="border-t border-brand-cream-dark my-2" />
-              
+
               {/* Report Sections */}
               {makhanaProduct.detailedReport.sections.map((sec, sidx) => (
                 <div key={sidx} className="mb-4">
                   <h4 className="font-serif text-lg text-brand-green font-bold mb-3 uppercase tracking-wide">
                     {sec.title}
                   </h4>
-                  
+
                   {sec.content && (
                     <p className="font-sans text-xs text-brand-charcoal/80 leading-relaxed mb-3">
                       {sec.content}
@@ -746,7 +784,7 @@ export default function Home() {
                 </div>
               ))}
             </div>
-            
+
             {/* Footer */}
             <div className="bg-brand-cream-dark p-4 md:p-6 border-t border-brand-cream-dark flex flex-col sm:flex-row gap-3 justify-between items-center text-[10px] text-brand-charcoal/50 font-sans font-bold uppercase tracking-widest flex-shrink-0">
               <span>Dominion Ventures Quality Assurance</span>

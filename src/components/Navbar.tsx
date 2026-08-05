@@ -2,21 +2,19 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { Menu, X, ArrowUpRight } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const navLinks = [
-  { href: '/', label: 'Home' },
-  { href: '/about', label: 'Our Story' },
-  { href: '/products', label: 'Products' },
-  { href: '/processing', label: 'Processing' },
+  { href: '#top', label: 'Home' },
+  { href: '#products', label: 'Products' },
+  { href: '#contact', label: 'Contact Us' },
 ];
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const pathname = usePathname();
+  const [activeSection, setActiveSection] = useState('Home');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,10 +28,20 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile menu on path changes
-  useEffect(() => {
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string, label: string) => {
+    e.preventDefault();
+    setActiveSection(label);
     setIsOpen(false);
-  }, [pathname]);
+
+    if (href === '#top') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
 
   return (
     <>
@@ -45,7 +53,11 @@ export default function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group">
+          <Link 
+            href="#top" 
+            onClick={(e) => handleNavClick(e, '#top', 'Home')}
+            className="flex items-center gap-3 group"
+          >
             <img
               src="/logo.png"
               alt="Dominion Ventures Logo"
@@ -61,15 +73,16 @@ export default function Navbar() {
             </div>
           </Link>
 
-          {/* Desktop Nav Items */}
+          {/* Desktop Nav Items (Home, Products, Contact Us) */}
           <nav className="hidden lg:flex items-center gap-10">
             {navLinks.map((link) => {
-              const isActive = pathname === link.href;
+              const isActive = activeSection === link.label;
               return (
-                <Link
+                <a
                   key={link.href}
                   href={link.href}
-                  className={`relative font-sans text-xs uppercase tracking-[0.2em] font-bold transition-all duration-300 ${isActive ? 'text-brand-green' : 'text-brand-charcoal/70 hover:text-brand-green'
+                  onClick={(e) => handleNavClick(e, link.href, link.label)}
+                  className={`relative font-sans text-xs uppercase tracking-[0.2em] font-bold transition-all duration-300 cursor-pointer ${isActive ? 'text-brand-green' : 'text-brand-charcoal/70 hover:text-brand-green'
                     }`}
                 >
                   {link.label}
@@ -80,21 +93,10 @@ export default function Navbar() {
                       transition={{ type: 'spring', stiffness: 350, damping: 28 }}
                     />
                   )}
-                </Link>
+                </a>
               );
             })}
           </nav>
-
-          {/* Action Button */}
-          <div className="hidden lg:flex items-center">
-            <Link
-              href="/products"
-              className="btn-primary !px-6 !py-3"
-            >
-              <span>Explore Products</span>
-              <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300 relative z-10" />
-            </Link>
-          </div>
 
           {/* Mobile Menu Button */}
           <button
@@ -119,31 +121,23 @@ export default function Navbar() {
           >
             <div className="flex flex-col gap-6">
               {navLinks.map((link) => {
-                const isActive = pathname === link.href;
+                const isActive = activeSection === link.label;
                 return (
-                  <Link
+                  <a
                     key={link.href}
                     href={link.href}
-                    className={`font-serif text-4xl tracking-wide transition-colors duration-300 ${isActive ? 'text-brand-gold font-medium' : 'text-brand-green hover:text-brand-gold'
+                    onClick={(e) => handleNavClick(e, link.href, link.label)}
+                    className={`font-serif text-4xl tracking-wide transition-colors duration-300 cursor-pointer ${isActive ? 'text-brand-gold font-medium' : 'text-brand-green hover:text-brand-gold'
                       }`}
                   >
                     {link.label}
-                  </Link>
+                  </a>
                 );
               })}
             </div>
 
-            <div className="flex flex-col gap-6 border-t border-brand-cream-dark pt-8">
-              <Link
-                href="/products"
-                className="flex items-center justify-center gap-2 bg-brand-green text-brand-cream text-center font-sans text-sm uppercase tracking-widest py-4.5 rounded-full hover:bg-brand-gold hover:text-brand-green transition-all duration-300 font-bold"
-              >
-                Explore Products
-                <ArrowUpRight size={16} />
-              </Link>
-              <div className="text-center text-[10px] text-brand-charcoal/40 uppercase tracking-[0.2em] font-bold">
-                © 2026 Dominion Ventures
-              </div>
+            <div className="border-t border-brand-cream-dark pt-8 text-center text-[10px] text-brand-charcoal/40 uppercase tracking-[0.2em] font-bold">
+              © 2026 Dominion Ventures
             </div>
           </motion.div>
         )}
