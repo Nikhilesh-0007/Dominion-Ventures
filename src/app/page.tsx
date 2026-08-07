@@ -347,7 +347,7 @@ export default function Home() {
                     </div>
 
                     <h3 className="font-serif text-4xl md:text-5xl text-brand-gold font-medium leading-[1.05]">
-                      Nutrait Makhana
+                      nutrait Makhana
                     </h3>
                     <p className="font-sans text-xs uppercase tracking-widest text-brand-gold/80 font-bold -mt-3">
                       Signature Superfood

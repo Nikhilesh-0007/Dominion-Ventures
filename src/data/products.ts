@@ -36,7 +36,7 @@ export interface Product {
 export const products: Product[] = [
   {
     id: "makhana",
-    name: "Nutrait Makhana",
+    name: "nutrait Makhana",
     category: "Traditional",
     description: "Our flagship superfood collection. Sourced from agricultural heartlands, slow dry-roasted, and infused with premium regional spices.",
     nutritionalHighlights: ["100% Traceable", "Jumbo Kernels", "Gluten Free", "High Protein"],
