@@ -124,7 +124,7 @@ const internationalFlavors = [
 const futureProducts = [
   {
     id: 'ice-cream',
-    title: 'Flavorette, The Melt Edition icecream',
+    title: 'Flavorette, The Melt Edition ice cream',
     tagline: 'Model 1, 2 & 3 Servings',
     desc: 'Anatomically sculpted fruit gelato shells encasing fresh berry sorbets, ultra-viscous shake layers separating rich pistachio creams, and interactive painter\'s palette plating concepts.',
     image: '/next_gen_ice (2).png',

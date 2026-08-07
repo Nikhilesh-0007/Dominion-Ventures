@@ -106,7 +106,7 @@ export const products: Product[] = [
   },
   {
     id: "ice-cream",
-    name: "Flavorette, The Melt Edition icecream",
+    name: "Flavorette, The Melt Edition ice cream",
     category: "International",
     description: "Creamy, premium functional desserts featuring sculpted anatomical fruit reproduction and interactive palettes.",
     nutritionalHighlights: ["Zero Refined Sugar", "Anatomically Sculpted", "Plant Protein Options", "Zero Waste Portions"],

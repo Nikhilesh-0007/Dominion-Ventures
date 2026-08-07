@@ -17,11 +17,11 @@ const productDetailsMap: Record<string, {
   }[];
 }> = {
   'ice-cream': {
-    title: "Flavorette, The Melt Edition icecream",
+    title: "Flavorette, The Melt Edition ice cream",
     category: "Gourmet Confectionery & Desserts",
     image: "/next_gen_ice (2).png",
     badge: "Anatomical Culinary Innovation",
-    overview: "ICECREAMS: Redefining Frozen Confectionery Presentation & Experiential Dining.",
+    overview: "ICE CREAMS: Redefining Frozen Confectionery Presentation & Experiential Dining.",
     contentBlocks: [
       {
         heading: "Model-1: Sculpted Fruit Gelato Shells",
@@ -36,7 +36,7 @@ const productDetailsMap: Record<string, {
       },
       {
         heading: "Model-3: The 'Artist's Palette' Plating",
-        text: "Serving icecream scoops on a painter's palette is a highly visual dessert eating experience. Typically featuring 2, 3, 4, 5 small scoops in various vibrant colors placed directly into palette's \"wells\", transforming taste into a literal art experience. Strawberry, mango, pistachio, blueberry onto the palette to mimic paint blobs."
+        text: "Serving ice cream scoops on a painter's palette is a highly visual dessert eating experience. Typically featuring 2, 3, 4, 5 small scoops in various vibrant colors placed directly into palette's \"wells\", transforming taste into a literal art experience. Strawberry, mango, pistachio, blueberry onto the palette to mimic paint blobs."
       }
     ]
   },
