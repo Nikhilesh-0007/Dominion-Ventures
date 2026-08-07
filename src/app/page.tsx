@@ -369,7 +369,7 @@ export default function Home() {
                   <div className="md:col-span-5 flex items-center justify-center">
                     <div className="relative aspect-square w-full max-w-[280px] rounded-3xl overflow-hidden bg-brand-green border border-brand-gold/20 shadow-premium-lg group-hover:scale-105 transition-transform duration-700">
                       <img
-                        src="/makhana (2).png"
+                        src="/file_00000000714081fba294870f691da319.png"
                         alt="Premium Makhana Package"
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:rotate-2"
                       />
