@@ -47,10 +47,10 @@ export default function Footer() {
 
             {/* Social Links */}
             <div className="flex gap-4 items-center mt-2">
-              <a 
-                href="https://www.instagram.com/dominion_ventures_official_?igsh=YWtreThubWhlZGcz" 
-                target="_blank" 
-                rel="noopener noreferrer" 
+              <a
+                href="https://www.instagram.com/dominion_ventures_official_?igsh=YWtreThubWhlZGcz"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full border border-brand-cream/15 flex items-center justify-center text-brand-cream/60 hover:text-brand-gold hover:border-brand-gold hover:scale-110 transition-all duration-300"
                 aria-label="Instagram"
               >
@@ -85,7 +85,7 @@ export default function Footer() {
             <div className="flex flex-col gap-3 text-xs text-brand-cream/60">
               <div className="flex items-center gap-3">
                 <Mail size={14} className="text-brand-gold shrink-0" />
-                <a href="mailto:Sravanseven555@gmail.com" className="hover:text-brand-gold transition-colors duration-300">Sravanseven555@gmail.com</a>
+                <a href="mailto:sravanseven555@gmail.com" className="hover:text-brand-gold transition-colors duration-300">sravanseven555@gmail.com</a>
               </div>
               <div className="flex items-center gap-3">
                 <Phone size={14} className="text-brand-gold shrink-0" />
