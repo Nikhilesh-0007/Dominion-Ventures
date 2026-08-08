@@ -1,21 +1,7 @@
-'use client';
-
-import { useState } from 'react';
 import Link from 'next/link';
-import { ArrowRight, Mail, Phone, MapPin, Instagram, Linkedin, Twitter } from 'lucide-react';
+import { Mail, Phone, MapPin, Instagram } from 'lucide-react';
 
 export default function Footer() {
-  const [email, setEmail] = useState('');
-  const [subscribed, setSubscribed] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (email) {
-      setSubscribed(true);
-      setEmail('');
-    }
-  };
-
   return (
     <footer id="contact" className="bg-brand-green-dark text-brand-cream pt-16 pb-10 relative overflow-hidden border-t-2 border-brand-gold/30">
       {/* Editorial Watermark Logo */}
@@ -27,7 +13,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 pb-10 border-b border-brand-cream/10">
 
           {/* Column 1: Brand Info */}
-          <div className="lg:col-span-5 flex flex-col gap-8">
+          <div className="lg:col-span-7 flex flex-col gap-6">
             <Link href="/" className="flex items-center gap-3 group w-fit">
               <img
                 src="/logo.png"
@@ -41,7 +27,7 @@ export default function Footer() {
               />
             </Link>
 
-            <p className="font-sans text-sm text-brand-cream/70 max-w-sm leading-relaxed">
+            <p className="font-sans text-sm text-brand-cream/70 max-w-md leading-relaxed">
               Elevating traditional nutrition and functional foods into premium, globally celebrated snacking experiences. Crafted with integrity, backed by science.
             </p>
 
@@ -56,59 +42,43 @@ export default function Footer() {
               >
                 <Instagram size={16} />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full border border-brand-cream/15 flex items-center justify-center text-brand-cream/60 hover:text-brand-gold hover:border-brand-gold hover:scale-110 transition-all duration-300" aria-label="LinkedIn">
-                <Linkedin size={16} />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full border border-brand-cream/15 flex items-center justify-center text-brand-cream/60 hover:text-brand-gold hover:border-brand-gold hover:scale-110 transition-all duration-300" aria-label="Twitter">
-                <Twitter size={16} />
-              </a>
             </div>
           </div>
 
-          {/* Column 2: Navigation Links */}
-          <div className="lg:col-span-3 flex flex-col gap-6">
-            <span className="font-sans text-xs uppercase tracking-[0.25em] text-brand-gold font-extrabold">
-              Navigation
-            </span>
-            <nav className="flex flex-col gap-3">
-              <a href="#top" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="font-sans text-sm text-brand-cream/70 hover:text-brand-gold hover:translate-x-1 transition-all duration-300 cursor-pointer">Home</a>
-              <a href="#products" onClick={(e) => { e.preventDefault(); document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' }); }} className="font-sans text-sm text-brand-cream/70 hover:text-brand-gold hover:translate-x-1 transition-all duration-300 cursor-pointer">Products</a>
-              <a href="#contact" onClick={(e) => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }); }} className="font-sans text-sm text-brand-cream/70 hover:text-brand-gold hover:translate-x-1 transition-all duration-300 cursor-pointer">Contact Us</a>
-            </nav>
-          </div>
-
-          {/* Column 3: Contact Details */}
-          <div className="lg:col-span-4 flex flex-col gap-8">
+          {/* Column 2: Contact Details */}
+          <div className="lg:col-span-5 flex flex-col gap-6">
             <span className="font-sans text-xs uppercase tracking-[0.25em] text-brand-gold font-extrabold">
               Contact Us
             </span>
-            <div className="flex flex-col gap-3 text-xs text-brand-cream/60">
-              <div className="flex items-center gap-3">
-                <Mail size={14} className="text-brand-gold shrink-0" />
-                <a href="mailto:sravanseven555@gmail.com" className="hover:text-brand-gold transition-colors duration-300">sravanseven555@gmail.com</a>
-              </div>
-              <div className="flex items-center gap-3">
-                <Phone size={14} className="text-brand-gold shrink-0" />
-                <a href="tel:+919391214224" className="hover:text-brand-gold transition-colors duration-300">+91 9391214224</a>
-              </div>
+            <div className="flex flex-col gap-4 text-xs text-brand-cream/70">
+              <a
+                href="mailto:dominionventuresofficial@gmail.com?subject=Inquiry%20-%20Dominion%20Ventures"
+                target="_top"
+                className="flex items-center gap-3 group w-fit hover:text-brand-gold transition-colors duration-300 cursor-pointer"
+              >
+                <Mail size={15} className="text-brand-gold shrink-0 transition-transform group-hover:scale-110" />
+                <span>dominionventuresofficial@gmail.com</span>
+              </a>
+              <a
+                href="tel:+919391214224"
+                className="flex items-center gap-3 group w-fit hover:text-brand-gold transition-colors duration-300 cursor-pointer"
+              >
+                <Phone size={15} className="text-brand-gold shrink-0 transition-transform group-hover:scale-110" />
+                <span>+91 9391214224</span>
+              </a>
               <div className="flex items-start gap-3">
-                <MapPin size={14} className="text-brand-gold mt-0.5 shrink-0" />
+                <MapPin size={15} className="text-brand-gold mt-0.5 shrink-0" />
                 <span className="leading-relaxed">DOMINION VENTURES, H.No:7-46, Old Malkajgiri, Malkajgiri, Medchel, Telangana - India.</span>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6 pt-10 text-[10px] text-brand-cream/40 uppercase tracking-[0.2em] font-bold">
-          <div>
-            © 2026 Dominion Ventures. All Rights Reserved.
-          </div>
-          <div className="flex gap-6">
-            <a href="#" className="hover:text-brand-gold transition-colors duration-300">Privacy Policy</a>
-            <a href="#" className="hover:text-brand-gold transition-colors duration-300">Terms of Service</a>
-          </div>
+        <div className="pt-8 text-center text-[10px] text-brand-cream/40 uppercase tracking-[0.2em] font-bold">
+          © 2026 Dominion Ventures. All Rights Reserved.
         </div>
       </div>
     </footer>
   );
 }
+
