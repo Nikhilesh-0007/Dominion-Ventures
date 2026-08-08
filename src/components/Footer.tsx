@@ -52,8 +52,7 @@ export default function Footer() {
             </span>
             <div className="flex flex-col gap-4 text-xs text-brand-cream/70">
               <a
-                href="mailto:dominionventuresofficial@gmail.com?subject=Inquiry%20-%20Dominion%20Ventures"
-                target="_top"
+                href="mailto:dominionventuresofficial@gmail.com"
                 className="flex items-center gap-3 group w-fit hover:text-brand-gold transition-colors duration-300 cursor-pointer"
               >
                 <Mail size={15} className="text-brand-gold shrink-0 transition-transform group-hover:scale-110" />
@@ -74,8 +73,21 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="pt-8 text-center text-[10px] text-brand-cream/40 uppercase tracking-[0.2em] font-bold">
-          © 2026 Dominion Ventures. All Rights Reserved.
+        <div className="pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] text-brand-cream/40 uppercase tracking-[0.2em] font-bold">
+          <div>
+            © 2026 Dominion Ventures. All Rights Reserved.
+          </div>
+          <div>
+            Developed by{' '}
+            <a
+              href="https://www.instagram.com/staffarc?igsh=NGI1ajBjank5aWF3"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-brand-gold hover:underline transition-colors duration-300"
+            >
+              StaffArc
+            </a>
+          </div>
         </div>
       </div>
     </footer>
